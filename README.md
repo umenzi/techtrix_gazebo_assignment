@@ -3,8 +3,8 @@
 This repository contains the code to run the simulation of the TechTrix robot, {name}, for the Gazebo Assignment.
 
 The `gazeboModels` folder contain a lot of models, mainly from [here](https://github.com/osrf/gazebo_models).
-The models made by TechTrix are named `tectrix_X` or `TechTrix_X`. For example, the robot model can be found in the
-`techtrix_robot` folder.
+The models made by TechTrix are named `techtrix_X` or `TechTrix_X`, where `X` is some string.
+For example, the robot model can be found in the `techtrix_robot` folder.
 
 The structure and content of each folder is explained [here](https://classic.gazebosim.org/tutorials?tut=build_robot&cat=build_robot)
 and [here](https://classic.gazebosim.org/tutorials?tut=attach_meshes&cat=build_robot).
