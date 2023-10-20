@@ -11,6 +11,10 @@ For example, the robot model can be found in the `techtrix_robot` folder.
 The structure and content of each folder is explained [here](https://classic.gazebosim.org/tutorials?tut=build_robot&cat=build_robot)
 and [here](https://classic.gazebosim.org/tutorials?tut=attach_meshes&cat=build_robot).
 
+## Running the simulation
+
+The simulation can be found in the `world` file. Hence, it can be run with the command: `gazebo simulation.world`
+
 ## URIs
 
 Note that we use `model://` in URIs, so you need to make sure the following:
