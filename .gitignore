@@ -1,8 +1,2 @@
-build
-build_*
-Ogre.log
-model.tar.gz
-*.swp
-.DS_Store
 .idea
 .vscode
