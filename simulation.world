@@ -13,16 +13,8 @@
     </include>
     
     <!-- We load the techtrix robot mesh -->
-    <model name="my_mesh">
-      <pose>0 0 0  0 0 0</pose>
-      <static>true</static>
-      <link name="body">
-        <visual name="visual">
-          <geometry>
-            <mesh><uri>file://gazeboModels/techtrix_robot/meshes/model.dae</uri></mesh>
-          </geometry>
-        </visual>
-      </link>
-    </model>
+    <include>
+    		<uri>model://techtrix_robot</uri>
+    </include>
   </world>
 </sdf>
