@@ -1,0 +1,29 @@
+<?xml version='1.0'?>
+<sdf version='1.4'>
+  <model name="techtrix_factory">
+  	<static>false</static>
+  	
+  	<!-- We simply show the model, and for now we do not include any collisions -->
+	 	<link name='factory_main'>
+	    <pose>0 0 .1 0 0 0</pose>
+
+      <collision name='collision'>
+	    	<pose>0.2 0 0 0 0 0</pose>
+	    
+	      <geometry>
+	        <box>
+	          <size>1.1 1 1.5</size>
+	        </box>
+	      </geometry>
+	    </collision>
+
+     <visual name='visual'>
+       <geometry>
+         <mesh>
+         		<uri>model://techtrix_factory/meshes/model.dae</uri>
+         </mesh>
+       </geometry>
+     </visual>
+	 	</link>
+  </model>
+</sdf>
