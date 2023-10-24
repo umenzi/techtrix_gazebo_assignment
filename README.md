@@ -6,6 +6,8 @@ This repository contains the code to run the simulation of the TechTrix robot, {
 
 Install the gazebo_ros_pkgs [here](https://classic.gazebosim.org/tutorials?tut=ros_installing&cat=connect_ros)
 
+Install ros-noetic-ros-control and ros-noetic-ros-controllers:
+
 ```bash
 sudo apt-get install ros-noetic-ros-control ros-noetic-ros-controllers
 ```
@@ -33,28 +35,6 @@ roslaunch techtrix_control techtrix_control.launch
 
 If you are using a Zsh terminal, you must source `setup.zsh` instead.
 
-### URIs
-
-Note that we use `model://` in URIs, so you need to make sure that gazebo knows where our `models` folder in the `techtrix_gazebo` package is.
-
-To do so, we need to run the following commands:
-
-1. Find where gazebo is: `$ whereis gazebo`.
-   - For example, in `/usr/share/gazebo`
-2. Source the gazebo setup file: `$ source <gazebo_path>/gazebo/setup.sh`
-   - For example, `$ source /usr/share/gazebo/setup.sh`.
-3. Check what are the model paths: `echo $GAZEBO_MODEL_PATH`
-   - If the path to the repo's `gazeboModel` folder is printed, nice.
-     You don't need to continue with the next steps.
-4. We add the new model path with the following command: `$ export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:<path_to_models_folder>`
-5. Go back to step 3.
-
-MAKE SURE TO DO RUN THESE COMMANDS IN THE SAME TERMINAL WINDOW WHERE YOU EXECUTE THE SIMULATION
-
-Why? Gazebo only searches for models in the `/usr/share/gazebo-11/models` directory (or a similar one). You can move your model to this directory to avoid having to run the command in step 4 each time. However, it is generally best to keep all of your project files in the same repository, so this is the preferred solution.
-
-If you don't want to run the command in step 4 each time, you can add it to your `.bashrc` or `.zshrc` file. This will make it run automatically whenever you open a new terminal window.
-
 ## ROS workspace
 
 Note that this is a ROS workspace, hence:
@@ -72,5 +52,5 @@ The repository consists of three different ROS packages:
   - The environment is loaded in `techtrix.world`, in the `worlds` folder.
   - The Techtrix robot is the `techtrix_robot` model into the `models` folder.
 - `techtrix_description` contains the model and basic functionality of the Techtrix robot.
-    For example, the robot model can be found in the `techtrix_robot` folder.
+  For example, the robot model can be found in the `techtrix_robot` folder.
 - `techtrix_control` contains the ROS code which controls what happens in the simulation.
