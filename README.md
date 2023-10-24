@@ -33,6 +33,28 @@ roslaunch techtrix_control techtrix_control.launch
 
 If you are using a Zsh terminal, you must source `setup.zsh` instead.
 
+### URIs
+
+Note that we use `model://` in URIs, so you need to make sure that gazebo knows where our `models` folder in the `techtrix_gazebo` package is.
+
+To do so, we need to run the following commands:
+
+1. Find where gazebo is: `$ whereis gazebo`.
+   - For example, in `/usr/share/gazebo`
+2. Source the gazebo setup file: `$ source <gazebo_path>/gazebo/setup.sh`
+   - For example, `$ source /usr/share/gazebo/setup.sh`.
+3. Check what are the model paths: `echo $GAZEBO_MODEL_PATH`
+   - If the path to the repo's `gazeboModel` folder is printed, nice.
+     You don't need to continue with the next steps.
+4. We add the new model path with the following command: `$ export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:<path_to_models_folder>`
+5. Go back to step 3.
+
+MAKE SURE TO DO THIS IN THE SAME TERMINAL AS WHERE YOU RUN THE SIMULATION
+
+Why? Well, Gazebo only uses the `/usr/share/gazebo-11/models` path (or a similar one) to get the models from. You can move the model there and then you don't need to do this. However, it is better to keep everything in the same repo and this is the solution.
+
+You don't want to do this every time? Then simply add the command in step 4 to your `.bashrc` or `.zshrc` file.
+
 ## ROS workspace
 
 Note that this is a ROS workspace, hence:
@@ -52,17 +74,3 @@ The repository consists of three different ROS packages:
 - `techtrix_description` contains the model and basic functionality of the Techtrix robot.
     For example, the robot model can be found in the `techtrix_robot` folder.
 - `techtrix_control` contains the ROS code which controls what happens in the simulation.
-
-## URIs
-
-Note that we use `model://` in URIs, so you need to make sure the following:
-
-1. Find where gazebo is: `> whereis gazebo`.
-   - For example, in `/usr/share/gazebo`
-2. Source the gazebo setup file: `> <gazebo_path>/gazebo/setup.sh`
-   - For example, `> source /usr/share/gazebo/setup.sh`.
-3. Check what are the model paths: `echo $GAZEBO_MODEL_PATH`
-   - If the path to the repo's `gazeboModel` folder is printed, nice.
-     You don't need to continue with the next steps.
-4. We add the new model path with the following command: `> export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:<path_to_models_folder>`
-5. Go back to step 3.
