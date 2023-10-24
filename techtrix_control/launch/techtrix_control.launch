@@ -1,4 +1,6 @@
 <launch>
+  <param name="robot_description" command="$(find xacro)/xacro $(find techtrix_description)/urdf/techtrix.xacro" />
+
   <!-- Load joint controller configurations from YAML file to parameter server -->
   <rosparam file="$(find techtrix_control)/config/techtrix_control.yaml" command="load"/>
 
