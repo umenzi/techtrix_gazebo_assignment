@@ -12,7 +12,7 @@ sudo apt-get install ros-noetic-ros-control ros-noetic-ros-controllers
 
 ## Installation
 
-Run the following commands
+Run the following commands:
 
 ```bash
 source /opt/ros/noetic/setup.bash
@@ -30,6 +30,8 @@ source ~/techtrix_ws/src/devel/setup.bash
 roslaunch techtrix_gazebo techtrix.launch
 roslaunch techtrix_control techtrix_control.launch
 ```
+
+If you are using a Zsh terminal, you must source `setup.zsh` instead.
 
 ## ROS workspace
 
