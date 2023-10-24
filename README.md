@@ -46,8 +46,9 @@ Note that this is a ROS workspace, hence:
 
 The repository consists of three different ROS packages:
 
-- `techtrix_gazebo` contains the code of the environment where the simulation takes place in.
-    For example, it includes the models of the conveyor belt, LPG cylinders, etc.
+- `techtrix_gazebo` contains the different models and worlds of our simulation.
+  - The environment is loaded in `techtrix.world`, in the `worlds` folder.
+  - The Techtrix robot is the `techtrix_robot` model into the `models` folder.
 - `techtrix_description` contains the model and basic functionality of the Techtrix robot.
     For example, the robot model can be found in the `techtrix_robot` folder.
 - `techtrix_control` contains the ROS code which controls what happens in the simulation.
