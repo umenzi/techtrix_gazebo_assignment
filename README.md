@@ -35,7 +35,7 @@ Note that this is a ROS workspace (TODO), hence:
 
 1. Run `catkin init` to see whether the ROS workspace is correctly setup.
 2. To build the workspace again, run `catkin clean -y && catkin build`.
-3. To run the URDF factory, use the command `roslaunch techtrix_gazebo visualize_hrwros.launch`.
+3. To run the URDF factory, use the command `roslaunch techtrix_urdf_factory visualize_hrwros.launch`.
 
    - If the package cannot be found, your workspace is not correctly set up.
 

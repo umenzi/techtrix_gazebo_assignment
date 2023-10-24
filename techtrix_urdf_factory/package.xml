@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>techtrix_gazebo</name>
+  <name>techtrix_urdf_factory</name>
   <version>0.0.0</version>
-  <description>The techtrix_gazebo package</description>
+  <description>The techtrix_urdf_factory package</description>
 
   <author>TechTrix</author>
   <maintainer email="javier@todo.todo">TechTrix</maintainer>
@@ -17,7 +17,7 @@
   <!-- Url tags are optional, but multiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
-  <!-- <url type="website">http://wiki.ros.org/techtrix_gazebo</url> -->
+  <!-- <url type="website">http://wiki.ros.org/techtrix_urdf_factory</url> -->
 
 
   <!-- Author tags are optional, multiple are allowed, one per tag -->

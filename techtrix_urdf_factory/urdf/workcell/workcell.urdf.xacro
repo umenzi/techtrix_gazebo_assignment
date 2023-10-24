@@ -1,24 +1,23 @@
 <?xml version="1.0" ?>
-<robot name="workcell_urdf" xmlns:xacro="http://www.ros.org/wiki/xacro">
-    <xacro:macro name="workcell_urdf" params="workcell_parent">
+<robot name="workcell_urdf"
+  xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="workcell_urdf" params="workcell_parent">
 
     <!-- Links -->
     <link name="world_interface"/>
     <link name="workcell">
       <visual>
         <geometry>
-          <mesh filename="package://techtrix_gazebo/meshes/workcell/visual/workcell.dae"/>
+          <mesh filename="package://techtrix_urdf_factory/meshes/workcell/visual/workcell.dae"/>
         </geometry>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://techtrix_gazebo/meshes/workcell/collision/workcell.dae"/>
+          <mesh filename="package://techtrix_urdf_factory/meshes/workcell/collision/workcell.dae"/>
         </geometry>
       </collision>
       <inertial>
-        <inertia ixx="1.0" ixy="0" ixz="0"
-                 iyy="1.0" iyz="0"
-                 izz="1.0" />
+        <inertia ixx="1.0" ixy="0" ixz="0" iyy="1.0" iyz="0" izz="1.0" />
         <mass value="100" />
       </inertial>
     </link>

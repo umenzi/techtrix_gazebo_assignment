@@ -1,37 +1,27 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
 
-<!--
+  <!--
   Author: Kelsey Hawkins
   Contributers: Jimmy Da Silva, Ajit Krisshna N L, Muhammad Asif Rana
 -->
 
-  <xacro:include filename="$(find techtrix_gazebo)/urdf/robot_model/ur.transmission.xacro" />
-  <xacro:include filename="$(find techtrix_gazebo)/urdf/robot_model/ur.gazebo.xacro" />
+  <xacro:include filename="$(find techtrix_urdf_factory)/urdf/robot_model/ur.transmission.xacro" />
+  <xacro:include filename="$(find techtrix_urdf_factory)/urdf/robot_model/ur.gazebo.xacro" />
 
   <xacro:macro name="cylinder_inertial" params="radius length mass *origin">
     <inertial>
       <mass value="${mass}" />
       <xacro:insert_block name="origin" />
-      <inertia ixx="${0.0833333 * mass * (3 * radius * radius + length * length)}" ixy="0.0" ixz="0.0"
-        iyy="${0.0833333 * mass * (3 * radius * radius + length * length)}" iyz="0.0"
-        izz="${0.5 * mass * radius * radius}" />
+      <inertia ixx="${0.0833333 * mass * (3 * radius * radius + length * length)}" ixy="0.0" ixz="0.0" iyy="${0.0833333 * mass * (3 * radius * radius + length * length)}" iyz="0.0" izz="${0.5 * mass * radius * radius}" />
     </inertial>
   </xacro:macro>
 
-  <xacro:macro name="ur10_robot" params="prefix joint_limited
-    shoulder_pan_lower_limit:=${-pi}    shoulder_pan_upper_limit:=${pi}
-    shoulder_lift_lower_limit:=${-pi}    shoulder_lift_upper_limit:=${pi}
-    elbow_joint_lower_limit:=${-pi}    elbow_joint_upper_limit:=${pi}
-    wrist_1_lower_limit:=${-pi}    wrist_1_upper_limit:=${pi}
-    wrist_2_lower_limit:=${-pi}    wrist_2_upper_limit:=${pi}
-    wrist_3_lower_limit:=${-pi}    wrist_3_upper_limit:=${pi}
-    transmission_hw_interface:=hardware_interface/PositionJointInterface
-    safety_limits:=false safety_pos_margin:=0.15
-    safety_k_position:=20">
+  <xacro:macro name="ur10_robot" params="prefix joint_limited shoulder_pan_lower_limit:=${-pi} shoulder_pan_upper_limit:=${pi} shoulder_lift_lower_limit:=${-pi} shoulder_lift_upper_limit:=${pi} elbow_joint_lower_limit:=${-pi} elbow_joint_upper_limit:=${pi} wrist_1_lower_limit:=${-pi} wrist_1_upper_limit:=${pi} wrist_2_lower_limit:=${-pi} wrist_2_upper_limit:=${pi} wrist_3_lower_limit:=${-pi} wrist_3_upper_limit:=${pi} transmission_hw_interface:=hardware_interface/PositionJointInterface safety_limits:=false safety_pos_margin:=0.15 safety_k_position:=20">
 
     <!-- Inertia parameters -->
-    <xacro:property name="base_mass" value="4.0" />  <!-- This mass might be incorrect -->
+    <xacro:property name="base_mass" value="4.0" />
+    <!-- This mass might be incorrect -->
     <xacro:property name="shoulder_mass" value="7.778" />
     <xacro:property name="upper_arm_mass" value="12.93" />
     <xacro:property name="forearm_mass" value="3.87" />
@@ -60,9 +50,12 @@
     <xacro:property name="d6" value="0.0922" />
 
     <!-- Arbitrary offsets for shoulder/elbow joints -->
-    <xacro:property name="shoulder_offset" value="0.220941" />  <!-- measured from model -->
-    <xacro:property name="elbow_offset" value="-0.1719" /> <!-- measured from model -->
-    <xacro:property name="upper_arm_inertia_offset" value="0.045" />  <!-- measured from model -->
+    <xacro:property name="shoulder_offset" value="0.220941" />
+    <!-- measured from model -->
+    <xacro:property name="elbow_offset" value="-0.1719" />
+    <!-- measured from model -->
+    <xacro:property name="upper_arm_inertia_offset" value="0.045" />
+    <!-- measured from model -->
 
     <!-- link lengths used in model -->
     <xacro:property name="shoulder_height" value="${d1}" />
@@ -72,10 +65,10 @@
     <xacro:property name="wrist_2_length" value="${d5}" />
     <xacro:property name="wrist_3_length" value="${d6}" />
 
-    <link name="${prefix}base_link" >
+    <link name="${prefix}base_link">
       <visual>
         <geometry>
-          <mesh filename="package://techtrix_gazebo/urdf/robot_model/meshes/visual/base.dae"/>
+          <mesh filename="package://techtrix_urdf_factory/urdf/robot_model/meshes/visual/base.dae"/>
         </geometry>
         <material name="LightGrey">
           <color rgba="0.7 0.7 0.7 1.0"/>
@@ -83,7 +76,7 @@
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://techtrix_gazebo/urdf/robot_model/meshes/collision/base.stl"/>
+          <mesh filename="package://techtrix_urdf_factory/urdf/robot_model/meshes/collision/base.stl"/>
         </geometry>
       </collision>
       <xacro:cylinder_inertial radius="0.075" length="0.038" mass="${base_mass}">
@@ -114,7 +107,7 @@
     <link name="${prefix}shoulder_link">
       <visual>
         <geometry>
-          <mesh filename="package://techtrix_gazebo/urdf/robot_model/meshes/visual/shoulder.dae"/>
+          <mesh filename="package://techtrix_urdf_factory/urdf/robot_model/meshes/visual/shoulder.dae"/>
         </geometry>
         <material name="LightGrey">
           <color rgba="0.7 0.7 0.7 1.0"/>
@@ -122,7 +115,7 @@
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://techtrix_gazebo/urdf/robot_model/meshes/collision/shoulder.stl"/>
+          <mesh filename="package://techtrix_urdf_factory/urdf/robot_model/meshes/collision/shoulder.stl"/>
         </geometry>
       </collision>
       <xacro:cylinder_inertial radius="0.075" length="0.178" mass="${shoulder_mass}">
@@ -153,7 +146,7 @@
     <link name="${prefix}upper_arm_link">
       <visual>
         <geometry>
-          <mesh filename="package://techtrix_gazebo/urdf/robot_model/meshes/visual/upperarm.dae"/>
+          <mesh filename="package://techtrix_urdf_factory/urdf/robot_model/meshes/visual/upperarm.dae"/>
         </geometry>
         <material name="LightGrey">
           <color rgba="0.7 0.7 0.7 1.0"/>
@@ -161,7 +154,7 @@
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://techtrix_gazebo/urdf/robot_model/meshes/collision/upperarm.stl"/>
+          <mesh filename="package://techtrix_urdf_factory/urdf/robot_model/meshes/collision/upperarm.stl"/>
         </geometry>
       </collision>
       <xacro:cylinder_inertial radius="0.075" length="${-a2}" mass="${upper_arm_mass}">
@@ -191,8 +184,8 @@
 
     <link name="${prefix}forearm_link">
       <visual>
-         <geometry>
-          <mesh filename="package://techtrix_gazebo/urdf/robot_model/meshes/visual/forearm.dae"/>
+        <geometry>
+          <mesh filename="package://techtrix_urdf_factory/urdf/robot_model/meshes/visual/forearm.dae"/>
         </geometry>
         <material name="LightGrey">
           <color rgba="0.7 0.7 0.7 1.0"/>
@@ -200,7 +193,7 @@
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://techtrix_gazebo/urdf/robot_model/meshes/collision/forearm.stl"/>
+          <mesh filename="package://techtrix_urdf_factory/urdf/robot_model/meshes/collision/forearm.stl"/>
         </geometry>
       </collision>
       <xacro:cylinder_inertial radius="0.075" length="${-a3}" mass="${forearm_mass}">
@@ -231,7 +224,7 @@
     <link name="${prefix}wrist_1_link">
       <visual>
         <geometry>
-          <mesh filename="package://techtrix_gazebo/urdf/robot_model/meshes/visual/wrist1.dae"/>
+          <mesh filename="package://techtrix_urdf_factory/urdf/robot_model/meshes/visual/wrist1.dae"/>
         </geometry>
         <material name="LightGrey">
           <color rgba="0.7 0.7 0.7 1.0"/>
@@ -239,7 +232,7 @@
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://techtrix_gazebo/urdf/robot_model/meshes/collision/wrist1.stl"/>
+          <mesh filename="package://techtrix_urdf_factory/urdf/robot_model/meshes/collision/wrist1.stl"/>
         </geometry>
       </collision>
       <xacro:cylinder_inertial radius="0.075" length="0.12" mass="${wrist_1_mass}">
@@ -270,7 +263,7 @@
     <link name="${prefix}wrist_2_link">
       <visual>
         <geometry>
-          <mesh filename="package://techtrix_gazebo/urdf/robot_model/meshes/visual/wrist2.dae"/>
+          <mesh filename="package://techtrix_urdf_factory/urdf/robot_model/meshes/visual/wrist2.dae"/>
         </geometry>
         <material name="LightGrey">
           <color rgba="0.7 0.7 0.7 1.0"/>
@@ -278,7 +271,7 @@
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://techtrix_gazebo/urdf/robot_model/meshes/collision/wrist2.stl"/>
+          <mesh filename="package://techtrix_urdf_factory/urdf/robot_model/meshes/collision/wrist2.stl"/>
         </geometry>
       </collision>
       <xacro:cylinder_inertial radius="0.075" length="0.12" mass="${wrist_2_mass}">
@@ -309,7 +302,7 @@
     <link name="${prefix}wrist_3_link">
       <visual>
         <geometry>
-          <mesh filename="package://techtrix_gazebo/urdf/robot_model/meshes/visual/wrist3.dae"/>
+          <mesh filename="package://techtrix_urdf_factory/urdf/robot_model/meshes/visual/wrist3.dae"/>
         </geometry>
         <material name="LightGrey">
           <color rgba="0.7 0.7 0.7 1.0"/>
@@ -317,7 +310,7 @@
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://techtrix_gazebo/urdf/robot_model/meshes/collision/wrist3.stl"/>
+          <mesh filename="package://techtrix_urdf_factory/urdf/robot_model/meshes/collision/wrist3.stl"/>
         </geometry>
       </collision>
       <xacro:cylinder_inertial radius="0.045" length="0.0305" mass="${wrist_3_mass}">

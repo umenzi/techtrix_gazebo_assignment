@@ -6,35 +6,31 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://techtrix_gazebo/meshes/bin/visual/bin.dae" />
+          <mesh filename="package://techtrix_urdf_factory/meshes/bin/visual/bin.dae" />
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://techtrix_gazebo/meshes/bin/collision/bin_bottom.dae"/>
+          <mesh filename="package://techtrix_urdf_factory/meshes/bin/collision/bin_bottom.dae"/>
         </geometry>
       </collision>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://techtrix_gazebo/meshes/bin/collision/bin_sides.dae"/>
+          <mesh filename="package://techtrix_urdf_factory/meshes/bin/collision/bin_sides.dae"/>
         </geometry>
       </collision>
       <inertial>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <inertia ixx="1.0" ixy="0" ixz="0"
-                 iyy="1.0" iyz="0"
-                 izz="1.0" />
+        <inertia ixx="1.0" ixy="0" ixz="0" iyy="1.0" iyz="0" izz="1.0" />
         <mass value="100" />
       </inertial>
     </link>
     <link name="${prefix}drop_point">
       <inertial>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <inertia ixx="1.0" ixy="0" ixz="0"
-                 iyy="1.0" iyz="0"
-                 izz="1.0" />
+        <inertia ixx="1.0" ixy="0" ixz="0" iyy="1.0" iyz="0" izz="1.0" />
         <mass value="1.0" />
       </inertial>
     </link>
