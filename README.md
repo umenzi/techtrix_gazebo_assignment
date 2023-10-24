@@ -49,11 +49,11 @@ To do so, we need to run the following commands:
 4. We add the new model path with the following command: `$ export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:<path_to_models_folder>`
 5. Go back to step 3.
 
-MAKE SURE TO DO THIS IN THE SAME TERMINAL AS WHERE YOU RUN THE SIMULATION
+MAKE SURE TO DO RUN THESE COMMANDS IN THE SAME TERMINAL WINDOW WHERE YOU EXECUTE THE SIMULATION
 
-Why? Well, Gazebo only uses the `/usr/share/gazebo-11/models` path (or a similar one) to get the models from. You can move the model there and then you don't need to do this. However, it is better to keep everything in the same repo and this is the solution.
+Why? Gazebo only searches for models in the `/usr/share/gazebo-11/models` directory (or a similar one). You can move your model to this directory to avoid having to run the command in step 4 each time. However, it is generally best to keep all of your project files in the same repository, so this is the preferred solution.
 
-You don't want to do this every time? Then simply add the command in step 4 to your `.bashrc` or `.zshrc` file.
+If you don't want to run the command in step 4 each time, you can add it to your `.bashrc` or `.zshrc` file. This will make it run automatically whenever you open a new terminal window.
 
 ## ROS workspace
 
