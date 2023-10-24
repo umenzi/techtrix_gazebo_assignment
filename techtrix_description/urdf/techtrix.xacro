@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="techtrix_robot">
+  <xacro:macro name="default_inertial" params="mass">
+    <inertial>
+      <mass value="${mass}" />
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+    </inertial>
+  </xacro:macro>
+
+  <xacro:property name="length" value="1" />
+  <xacro:property name="width" value="1" />
+  <xacro:property name="height" value="1" />
+
+  <link name="base_link">
+    <xacro:default_inertial mass="1"/>
+  </link>
+
+  <link name="chassis">
+    <collision name="collision">
+      <geometry>
+        <box size="${width} ${length} ${height}" />
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <geometry>
+        <box size="${width} ${length} ${height}" />
+      </geometry>
+    </visual>
+    <xacro:default_inertial mass="1"/>
+  </link>
+
+  <joint name="base_joint" type="prismatic">
+    <parent link="base_link" />
+    <child link="chassis" />
+    <origin xyz="0 0 ${height/2}" />
+    <limit effort="1000.0" lower="-5" upper="0" velocity="0.5"/>
+    <axis xyz="0 1 0" />
+  </joint>
+
+  <gazebo reference="base_link">
+    <kinematic>true</kinematic>
+  </gazebo>
+
+  <transmission name="base_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="base_joint">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="base_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/techtrix</robotNamespace>
+      <robotParam>/techtrix_description</robotParam>
+    </plugin>
+  </gazebo>
+
+</robot>
