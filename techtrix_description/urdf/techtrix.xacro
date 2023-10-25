@@ -15,15 +15,7 @@
   <!-- Used for fixing robot to Gazebo 'base_link' -->
   <link name="world"/>
 
-  <joint name="base_joint" type="prismatic">
-    <parent link="world" />
-    <child link="chassis" />
-    <origin xyz="0 0 ${height/2}" />
-    <limit effort="1000.0" lower="0" upper="5.75" velocity="0.5" />
-    <axis xyz="0 1 0" />
-  </joint>
-
-  <link name="chassis">
+  <link name="frame">
     <!-- <collision>
       <geometry>
         <box size="${width} ${length} ${height}" />
@@ -38,13 +30,17 @@
     <xacro:default_inertial mass="1"/>
   </link>
 
+  <link name="bearing">
+    <xacro:default_inertial mass="1"/>
+  </link>
+
   <link name="grabber">
-    <!-- <collision>
+    <collision>
       <origin xyz="0 0 -0.015" />
       <geometry>
         <box size="1.375 0.26 0.03" />
       </geometry>
-    </collision> -->
+    </collision>
     <visual>
       <origin xyz="0 -1.133 -2.7575" rpy="0 0 ${-pi/2}" />
       <geometry>
@@ -54,12 +50,27 @@
     <xacro:default_inertial mass="1"/>
   </link>
 
+  <joint name="base_joint" type="prismatic">
+    <parent link="world" />
+    <child link="frame" />
+    <axis xyz="0 1 0" />
+    <origin xyz="0 0 ${height/2}" />
+    <limit effort="1000.0" lower="0" upper="5.75" velocity="0.5" />
+  </joint>
+
   <joint name="lifting_joint" type="prismatic">
-    <parent link="chassis" />
-    <child link="grabber" />
-    <origin xyz="0 1.5 ${(height/2)-0.075}" />
-    <limit effort="1000.0" lower="0" upper="-1.5" velocity=".1" />
+    <parent link="frame" />
+    <child link="bearing" />
     <axis xyz="0 0 1" />
+    <origin xyz="0 1.5 ${(height/2)-0.125}" />
+    <limit effort="1000.0" lower="-1.475" upper="0" velocity="0.1" />
+  </joint>
+
+  <joint name="rotating_joint" type="revolute">
+    <parent link="bearing" />
+    <child link="grabber" />
+    <axis xyz="0 0 1" />
+    <limit effort="1000.0" lower="${-pi/2}" upper="0" velocity="0.5" />
   </joint>
 
   <transmission name="base_transmission">
@@ -79,5 +90,4 @@
       <robotParam>/techtrix_description</robotParam>
     </plugin>
   </gazebo>
-
 </robot>
