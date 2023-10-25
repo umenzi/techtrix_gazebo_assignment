@@ -24,11 +24,11 @@
   </joint>
 
   <link name="chassis">
-    <collision>
+    <!-- <collision>
       <geometry>
         <box size="${width} ${length} ${height}" />
       </geometry>
-    </collision>
+    </collision> -->
     <visual>
       <origin xyz="0 0.375 -2.355" rpy="0 0 ${-pi/2}" />
       <geometry>
