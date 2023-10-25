@@ -9,3 +9,13 @@ techtrix:
     type: effort_controllers/JointPositionController
     joint: base_joint
     pid: { p: 100.0, i: 0.01, d: 10.0 }
+
+  lifting_joint_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: lifting_joint
+    pid: { p: 100.0, i: 0.01, d: 10.0 }
+
+  rotating_joint_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: rotating_joint
+    pid: { p: 100.0, i: 0.01, d: 10.0 }
