@@ -1,4 +1,4 @@
-# Gazebo Assignment
+Add# Gazebo Assignment
 
 This repository contains the code to run the simulation of the TechTrix robot, {name}, for the Gazebo Assignment.
 
@@ -50,7 +50,8 @@ The repository consists of three different ROS packages:
 
 - `techtrix_gazebo` contains the different models and worlds of our simulation.
   - The environment is loaded in `techtrix.world`, in the `worlds` folder.
-  - The Techtrix robot is the `techtrix_robot` model into the `models` folder.
-- `techtrix_description` contains the model and basic functionality of the Techtrix robot.
+  - The TechTrix robot is the `techtrix_robot` model into the `models` folder.
+  - The meshes of the factory, truck, and conveyor belt were done in Blender. The original `.blend` file and the models used can be found in the `blender_environment` folder.
+- `techtrix_description` contains the model and basic functionality of the TechTrix robot.
   For example, the robot model can be found in the `techtrix_robot` folder.
 - `techtrix_control` contains the ROS code which controls what happens in the simulation.

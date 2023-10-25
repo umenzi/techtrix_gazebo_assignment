@@ -1,4 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-  <param name="robot_description" command="$(find xacro)/xacro '$(find techtrix_urdf_factory)/urdf/hrwros.xacro'" />
-</launch>
