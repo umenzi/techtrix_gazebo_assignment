@@ -11,6 +11,29 @@
     <include>
       <uri>model://ground_plane</uri>
     </include>
+
+    <!-- Disable shadows. -->
+    <scene>
+      <shadows>false</shadows>
+    </scene>
+
+    <light name="scene_spot_light" type="spot">
+      <pose>0 8 10 0 0 0</pose> <!-- Adjust the position (x y z) and orientation (roll pitch yaw) as needed -->
+      <diffuse>1 1 1 1</diffuse> <!-- RGBA values for the diffuse color (white light in this case) -->
+      <direction>0 0 -1</direction> <!-- Direction the light is pointing (z is usually -1 for a light) -->
+      <attenuation>
+        <range>200</range> <!-- Adjust the range of the light as needed -->
+        <constant>0.9</constant> <!-- Constant attenuation factor -->
+        <linear>0.01</linear> <!-- Linear attenuation factor -->
+        <quadratic>0.001</quadratic> <!-- Quadratic attenuation factor -->
+      </attenuation>
+      <cast_shadows>0</cast_shadows> <!-- Whether the light casts shadows -->
+      <spot>
+        <inner_angle>0.6</inner_angle>
+        <outer_angle>1</outer_angle>
+        <falloff>1</falloff>
+      </spot>
+    </light>
     
     <!-- We load the factory environment -->
     <include>
