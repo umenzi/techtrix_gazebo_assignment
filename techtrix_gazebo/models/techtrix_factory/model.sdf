@@ -21,7 +21,7 @@
      <visual name='visual'>
        <geometry>
          <mesh>
-         		<uri>model://techtrix_factory/meshes/model.dae</uri>
+         	<uri>model://techtrix_factory/meshes/model.dae</uri>
          </mesh>
        </geometry>
      </visual>

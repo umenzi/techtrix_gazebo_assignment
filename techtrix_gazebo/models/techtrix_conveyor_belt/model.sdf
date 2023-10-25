@@ -1,10 +1,10 @@
 <?xml version='1.0'?>
 <sdf version='1.4'>
   <model name="techtrix_conveyor_belt">
-  	<static>false</static>
+  	<static>true</static>
   	
   	<!-- We simply show the model, and for now we do not include any collisions -->
-	<link name='factory_main'>
+	<link name='conveyor_main'>
 	    <pose>0 0 .1 0 0 0</pose>
 
       	<!-- The collision box will have no z value, so that the environment is shown on the ground-->
@@ -21,7 +21,7 @@
      <visual name='visual'>
        <geometry>
          <mesh>
-         		<uri>model://techtrix_conveyor_belt/meshes/model.dae</uri>
+         	<uri>model://techtrix_conveyor_belt/meshes/model.dae</uri>
          </mesh>
        </geometry>
      </visual>

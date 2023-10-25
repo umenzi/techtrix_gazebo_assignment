@@ -4,7 +4,7 @@
   	<static>true</static>
   	
   	<!-- We simply show the model, and for now we do not include any collisions -->
-	<link name='factory_main'>
+	<link name='truck_main'>
 	    <pose>0 0 .1 0 0 0</pose>
 
       	<!-- The collision box will have no z value, so that the environment is shown on the ground-->
@@ -21,7 +21,7 @@
      <visual name='visual'>
        <geometry>
          <mesh>
-         		<uri>model://techtrix_truck/meshes/model.dae</uri>
+         	<uri>model://techtrix_truck/meshes/model.dae</uri>
          </mesh>
        </geometry>
      </visual>
