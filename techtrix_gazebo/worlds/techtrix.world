@@ -16,21 +16,26 @@
     <include>
     		<uri>model://techtrix_factory</uri>
         <name>Techtrix factory</name>
-        <!-- <pose>-2.0 7.0 0 0 0 0</pose> -->
     </include>
 
     <!-- We load the conveyor belt -->
     <include>
     		<uri>model://techtrix_conveyor_belt</uri>
         <name>Techtrix conveyor belt</name>
-        <!-- <pose>-2.0 7.0 0 0 0 0</pose> -->
     </include>
 
     <!-- We load the truck -->
     <include>
     		<uri>model://techtrix_truck</uri>
         <name>Techtrix truck</name>
-        <!-- <pose>-2.0 7.0 0 0 0 0</pose> -->
+    </include>
+
+    <!-- We load the cylinder -->
+    <include>
+    		<uri>model://techtrix_cylinder</uri>
+        <name>Techtrix cylinder</name>
+        <!-- We make sure it is above the conveyor belt-->
+        <pose>0 0 1.45 0 0 0</pose>
     </include>
   </world>
 </sdf>
