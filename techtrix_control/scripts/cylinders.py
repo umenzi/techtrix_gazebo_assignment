@@ -1,20 +1,20 @@
 #!/usr/bin/env python
 
 import rospy
-import sys
-import os
+import rospkg
+import time
+
 from gazebo_msgs.srv import SpawnModel, SetModelState
 from gazebo_msgs.msg import ModelState
-from geometry_msgs.msg import Pose, Point
-import rospkg
+from gazebo_msgs.srv import DeleteModel # For deleting models from the environment
 
-def spawn_cylinder(rospack):
-    rospy.wait_for_service('/gazebo/spawn_sdf_model')
-    spawn_model_client = rospy.ServiceProxy('/gazebo/spawn_sdf_model', SpawnModel)
-    
+from geometry_msgs.msg import Pose, Point
+
+def spawn_cylinder(rospack, time_in_between=0):
     cylinders = []
     y_value = 0
     
+    spawn_model_client = rospy.ServiceProxy('/gazebo/spawn_sdf_model', SpawnModel)
     ros_package_location = rospack.get_path('techtrix_gazebo')
     cylinder_location = f"{ros_package_location}/models/techtrix_cylinder/model.sdf"
     
@@ -26,20 +26,22 @@ def spawn_cylinder(rospack):
             robot_namespace='/techtrix_description',
             initial_pose=cylinder['pose'],
             reference_frame='world'
-        )
+        ) # Adds to Gazebo
         
         cylinders.append(cylinder)
         y_value -= 1
-        rospy.sleep(0.01)
+        time.sleep(time_in_between)
     
     return cylinders
     
-# def delete_cylinder():
-#     print("")
-#     for index in range(6):
-#         name = {model_name: 'Techtrix cylinder_{index}'}
-#         os.system(f"rosservice call gazebo/delete_model {name}")
-#         rospy.sleep(5)
+def delete_cylinders(cylinders, time_in_between=0):
+    # delete_model : gazebo_msgs/DeleteModel
+    del_model_prox = rospy.ServiceProxy('gazebo/delete_model', DeleteModel) # Handle to model spawner
+    
+    for cylinder in cylinders:
+        name = str(cylinder['name'])
+        del_model_prox(name) # Remove from Gazebo
+        time.sleep(time_in_between)
 
 # def move_cylinder(cylinder, index):
 #     rospy.wait_for_service('/gazebo/set_model_state')
@@ -56,32 +58,14 @@ def spawn_cylinder(rospack):
 if __name__ == '__main__':
     rospy.init_node('spawn_and_move_cylinders')
     
-    rospack = rospkg.RosPack()
-    
-    cylinders = spawn_cylinder(rospack)
-    
-    # rospy.sleep(5)
-    
-    # for index, cylinder in enumerate(cylinders):
-    #     move_cylinder(cylinder, index)
-    
-    # rospy.sleep(5)
-    
-    # delete_cylinder()
-
-    # # Get the model path from the launch file parameter
-    # model_path = rospy.get_param('cylinder_description')
-
-    # # Define your robot names, positions, and time intervals
-    # robot_info = [
-    #     {"name": "robot1", "x": 0.0, "y": 0.0, "z": 0.0, "interval": 5},
-    #     # Add more robots as needed
-    # ]
-
-    # for info in robot_info:
-    #     spawn_robot(info["name"], info["x"], info["y"], info["z"], model_path)
-    #     rospy.sleep(info["interval"])
-
-    # # After spawning, move the robots to the right
-    # for info in robot_info:
-    #     move_robot(info["name"], x_offset=1.0)  # Adjust x_offset as needed
+    if not rospy.is_shutdown():
+        rospy.wait_for_service('/gazebo/spawn_sdf_model')
+        
+        rospack = rospkg.RosPack()
+        
+        cylinders = spawn_cylinder(rospack, 0.5)
+        
+        # for index, cylinder in enumerate(cylinders):
+        #     move_cylinder(cylinder, index)
+        
+        delete_cylinders(cylinders, 0.5)
