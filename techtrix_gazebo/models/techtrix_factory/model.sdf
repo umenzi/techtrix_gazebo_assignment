@@ -5,11 +5,9 @@
   	
   	<!-- We simply show the model, and for now we do not include any collisions -->
 	<link name='factory_main'>
-	    <pose>0 0 .1 0 0 0</pose>
-
 		<!-- The collision box will have no z value, so that the environment is shown on the ground-->
 		<collision name='collision'>
-	    	<pose>-0.25 2 0 0 0 0</pose>
+		  <pose>-0.25 2 0 0 0 0</pose>
 	    
 	      <geometry>
 	        <box>
