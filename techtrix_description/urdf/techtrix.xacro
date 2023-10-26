@@ -34,7 +34,7 @@
     <xacro:default_inertial mass="1"/>
   </link>
 
-  <link name="grabber">
+  <link name="grabbing_mechanism">
     <collision>
       <origin xyz="0 0 -0.015" />
       <geometry>
@@ -44,7 +44,7 @@
     <visual>
       <origin xyz="0 -1.133 -2.7575" rpy="0 0 ${-pi/2}" />
       <geometry>
-        <mesh filename="package://techtrix_description/meshes/techtrix_grabber.dae" scale="${1/3} ${1/3} ${1/3}" />
+        <mesh filename="package://techtrix_description/meshes/techtrix_grabbing_mechanism.dae" scale="${1/3} ${1/3} ${1/3}" />
       </geometry>
     </visual>
     <xacro:default_inertial mass="1"/>
@@ -69,7 +69,7 @@
 
   <joint name="rotating_joint" type="revolute">
     <parent link="bearing" />
-    <child link="grabber" />
+    <child link="grabbing_mechanism" />
     <axis xyz="0 0 1" />
     <limit effort="1000.0" lower="${-pi/2}" upper="0" velocity="0.5" />
   </joint>
