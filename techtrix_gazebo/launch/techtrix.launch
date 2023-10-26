@@ -1,5 +1,5 @@
 <launch>
-  <!-- Add models custom models to the path -->
+  <!-- Add custom models to model path -->
   <env name="GAZEBO_MODEL_PATH" value="$(find techtrix_gazebo)/models" />
 
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
