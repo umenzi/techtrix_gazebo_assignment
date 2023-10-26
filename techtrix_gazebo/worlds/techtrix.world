@@ -54,11 +54,10 @@
     </include>
 
     <!-- We load the cylinder -->
-    <include>
+    <!-- <include>
     		<uri>model://techtrix_cylinder</uri>
         <name>Techtrix cylinder</name>
-        <!-- We make sure it is above the conveyor belt-->
         <pose>0 0 1.45 0 0 0</pose>
-    </include>
+    </include> -->
   </world>
 </sdf>

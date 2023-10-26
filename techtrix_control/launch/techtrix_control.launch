@@ -12,4 +12,6 @@
     <remap from="/joint_states" to="/techtrix/joint_states" />
   </node>
 
+  <!-- Spawns cylinders in the environment -->
+  <node name="spawn_and_move_cylinders" pkg="techtrix_control" type="cylinders.py" />
 </launch>
