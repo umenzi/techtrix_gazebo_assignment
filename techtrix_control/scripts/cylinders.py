@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-from turtle import position
 import rospy
 import rospkg
 import time
