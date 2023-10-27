@@ -29,7 +29,10 @@ git clone git@github.com:umenzi/techtrix_gazebo_assignment.git
 catkin build
 source ~/techtrix_ws/src/devel/setup.bash
 
+# Run Gazebo environment
 roslaunch techtrix_gazebo techtrix.launch
+
+# Run ROS, e.g., loads the generation of cylinders and movement of the robot
 roslaunch techtrix_control techtrix_control.launch
 ```
 
@@ -41,8 +44,7 @@ Note that this is a ROS workspace, hence:
 
 1. Run `catkin init` to see whether the ROS workspace is correctly setup.
 2. To build the workspace again, run `catkin clean -y && catkin build`.
-3. To run the URDF factory, use the command `roslaunch techtrix_urdf_factory visualize_hrwros.launch`.
-   - If the package cannot be found, your workspace is not correctly set up.
+   - If you get an RLException when running the `roslaunch` commands, your workspace is not correctly set up.
 
 # General Structure
 
@@ -50,7 +52,7 @@ The repository consists of three different ROS packages:
 
 - `techtrix_gazebo` contains the different models and worlds of our simulation.
   - The environment is loaded in `techtrix.world`, in the `worlds` folder.
-  - The TechTrix robot is the `techtrix_robot` model into the `models` folder.
+  - The models, such as the factory, cylinder, or the conveyor belt, can be found in the `models` folder.
   - The meshes of the factory, truck, and conveyor belt were done in Blender. The original `.blend` file and the models used can be found in the `blender_environment` folder.
 - `techtrix_description` contains the model and basic functionality of the TechTrix robot.
   For example, the robot model can be found in the `techtrix_robot` folder.
