@@ -2,9 +2,14 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="techtrix_robot">
 
   <!-- camera -->
-  <gazebo reference="camera_link">
-    <sensor type="camera" name="camera1">
-      <update_rate>30.0</update_rate>
+  <gazebo reference="camera_link"> <!--The link name must match the link name of the URDF model -->
+    <sensor type="camera" name="camera1"> <!-- The name "camera1" must be unique from all other sensors -->
+      <update_rate>30.0</update_rate> <!-- Number of times per second a new camera image is taken within Gazebo -->
+                                      <!-- This is the maximum update rate the sensor will attempt during simulation 
+                                           but it could fall behind this target rate if the physics simulation runs 
+                                           faster than the sensor generation can keep up.-->
+      <!-- Next, we set upp the manufacturer;s spects of our physical camera hardware -->
+      <!-- Note that the pixels are assumed to be square -->
       <camera name="head">
         <horizontal_fov>1.3962634</horizontal_fov>
         <image>
@@ -12,6 +17,10 @@
           <height>800</height>
           <format>R8G8B8</format>
         </image>
+        <!-- The near and far clips are simulation-specific 
+             parameters that give an upper and lower bound to the distance
+             in which the cameras can see objects in the simulation.
+             This is specified in the camera's optometry frame. -->
         <clip>
           <near>0.02</near>
           <far>300</far>
@@ -25,12 +34,19 @@
           <stddev>0.007</stddev>
         </noise>
       </camera>
+      <!-- This is where the actual gazebo_ros/gazebo_ros_camera.cpp file is linked to, as a shared object -->
       <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>0.0</updateRate>
-        <cameraName>rrbot/camera1</cameraName>
+        <!-- We define the rostopic the camera will be publishing to, for both the image topic and the camera info topic -->
+        <cameraName>techtrix/camera1</cameraName>
         <imageTopicName>image_raw</imageTopicName>
         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <!-- Hence, for techtrix robot, you should subscribe to:
+             /techtrix/camera1/image_raw
+             /techtrix/camera1/camera_info-->
+        <!-- Finally, we set the coordinate frame the image 
+             is published under in the tf tree.-->
         <frameName>camera_link</frameName>
         <hackBaseline>0.07</hackBaseline>
         <distortionK1>0.0</distortionK1>
@@ -41,5 +57,4 @@
       </plugin>
     </sensor>
   </gazebo>
-    
 </robot>
