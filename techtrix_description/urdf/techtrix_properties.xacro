@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="techtrix_robot">
+
+  <!-- Constants for robot dimensions -->
+  <xacro:property name="pi" value="3.1415926535897931" />
+  <xacro:property name="length" value="1.6" />
+  <xacro:property name="width" value="1.5" />
+  <xacro:property name="height" value="2.3" />
+  <xacro:property name="camera_link" value="0.05" /> <!-- Size of square 'camera' box -->
+
+</robot>
