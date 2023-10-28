@@ -10,11 +10,36 @@
   <link name="world"/>
 
   <link name="frame">
-    <!-- <collision>
+    <collision>
+      <origin xyz="0 0 ${(-height/2)+0.19}" />
       <geometry>
-        <box size="${width} ${length} ${height}" />
+        <box size="${width} ${length} 0.3" />
       </geometry>
-    </collision> -->
+    </collision>
+    <collision>
+      <origin xyz="0 0 ${(height/2)-0.045}" />
+      <geometry>
+        <box size="${width} ${length} 0.12" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0 0.745 ${(height/2)-0.045}" />
+      <geometry>
+        <box size="${width} ${length} 0.12" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="${(width/2)-0.03} 0 0" />
+      <geometry>
+        <box size="0.1 ${length} ${height}" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="${(-width/2)+0.03} 0 0" />
+      <geometry>
+        <box size="0.1 ${length} ${height}" />
+      </geometry>
+    </collision>
     <visual>
       <origin xyz="0 0.375 -2.355" rpy="0 0 ${-pi/2}" />
       <geometry>
@@ -49,18 +74,18 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-	      <box size="${camera_link} ${camera_link} ${camera_link}"/>
+        <box size="${camera_link} ${camera_link} ${camera_link}"/>
       </geometry>
     </collision>
 
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-	      <box size="${camera_link} ${camera_link} ${camera_link}"/>
+        <box size="${camera_link} ${camera_link} ${camera_link}"/>
       </geometry>
       <material name="yellow">
         <color rgba="1 1 0 1"/>
-      </material> 
+      </material>
     </visual>
 
     <inertial>
