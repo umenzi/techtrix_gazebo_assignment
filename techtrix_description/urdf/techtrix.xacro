@@ -58,9 +58,6 @@
       <geometry>
 	      <box size="${camera_link} ${camera_link} ${camera_link}"/>
       </geometry>
-      <material name="yellow">
-        <color rgba="1 1 0 1"/>
-      </material> 
     </visual>
 
     <inertial>
@@ -97,7 +94,7 @@
     <parent link="frame"/>
     <child link="camera_link"/>
     <axis xyz="0 1 0" />
-    <origin xyz="${camera_link} 0 1" rpy="0 0 0"/>
+    <origin xyz="${camera_link} 0 1" rpy="0 0 -1.6"/>
   </joint>
 
   <transmission name="base_transmission">
