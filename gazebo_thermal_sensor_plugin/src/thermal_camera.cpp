@@ -127,7 +127,7 @@ namespace gazebo
             {
                 if ((_src[img_index] > 254) && (_src[img_index + 1] < 1) && (_src[img_index + 2] < 1))
                 {
-                    // RGB [255,0,0] translates to white (white hot)
+                    // RGB [255,0,0] translates to white (white-hot)
                     data[i] = 255;
                 }
                 else
