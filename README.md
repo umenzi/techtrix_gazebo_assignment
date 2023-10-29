@@ -57,3 +57,22 @@ The repository consists of three different ROS packages:
 - `techtrix_description` contains the model and basic functionality of the TechTrix robot.
   For example, the robot model can be found in the `techtrix_robot` folder.
 - `techtrix_control` contains the ROS code which controls what happens in the simulation.
+
+# Sensors
+
+The robot makes use of multiple sensors:
+
+- Thermal sensor. The thermal sensor is used so that the robot can detect whether there are humans too close to the conveyor belt, in which case it will shutdown for emergency reasons.
+- TODO
+
+## Thermal sensor
+
+The thermal sensor can be found as the "thermal_link" link object in the techtrix robot URDF model. As there is no implementation of a thermal sensor in Gazebo classic, we had to implement our own custom Gazebo plugin, based on the camera sensor's plugin. The custom plugin can be found in `gazebo_plugins.xacro`.
+
+To run it:
+
+1. Run the gazebo simulation: `roslaunch techtrix_gazebo techtrix.launch`.
+2. Run Rviz: `roslaunch techtrix_gazebo techtrix_rviz.launch`.
+
+- You should already be able to see a window showing the thermal sensor's output.
+- If you don't, in Rviz, dd a `Camera` display and under `Image Topic` set it to `/techtrix/thermal1/image_raw`.
