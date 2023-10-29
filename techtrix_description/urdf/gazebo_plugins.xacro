@@ -55,6 +55,48 @@
         <distortionT1>0.0</distortionT1>
         <distortionT2>0.0</distortionT2>
       </plugin>
+
+      <!-- <plugin name="gazebo_light_sensor_plugin" filename="libgazebo_light_sensor_plugin.so">
+         <cameraName>techtrix/camera1</cameraName>
+         <alwaysOn>true</alwaysOn>
+         <updateRate>0.0</updateRate>
+         <imageTopicName>image_raw</imageTopicName>
+         <depthImageTopicName>depth/image_raw</depthImageTopicName>
+         <pointCloudTopicName>depth/points</pointCloudTopicName>
+         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+         <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
+         <frameName>camera_link</frameName>
+         <hackBaseline>0.07</hackBaseline>
+         <distortionK1>0.0</distortionK1>
+         <distortionK2>0.0</distortionK2>
+         <distortionK3>0.0</distortionK3>
+         <distortionT1>0.0</distortionT1>
+         <distortionT2>0.0</distortionT2>
+         <pointCloudCutoff>0.4</pointCloudCutoff>
+         <robotNamespace>/</robotNamespace>
+       </plugin> -->
+
+       <plugin name="gazebo_thermal_sensor_plugin" filename="libgazebo_thermal_sensor_plugin.so">
+         <cameraName>techtrix/thermal1</cameraName>
+         <alwaysOn>true</alwaysOn>
+         <updateRate>0.0</updateRate>
+         <imageTopicName>image_raw</imageTopicName>
+         <depthImageTopicName>depth/image_raw</depthImageTopicName>
+         <pointCloudTopicName>depth/points</pointCloudTopicName>
+         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+         <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
+         <frameName>camera_link</frameName>
+         <robotNamespace>/</robotNamespace>
+       </plugin>
+
+       <controller type="gazebo_ros_thermal_camera" name="thermal_camera_controller" plugin="libgazebo_ros_thermal_depth_camera.so">
+          <alwaysOn>true</alwaysOn>
+          <updateRate>10</updateRate>
+          <imageTopicName>/thermal_camera/image_raw</imageTopicName>
+          <cameraInfoTopicName>/thermal_camera/camera_info</cameraInfoTopicName>
+          <frameName>thermal_optical_frame</frameName>
+          <interface type="camera" name="thermal_camera_iface" />
+        </controller>
     </sensor>
   </gazebo>
 </robot>

@@ -30,22 +30,32 @@
 			</geometry>
 		</collision>
 
-     <visual name='visual'>
-		<pose>0 0 -0.5 0 0 0</pose>
-		<geometry>
-			<mesh>
-				<uri>model://techtrix_cylinder/meshes/model.dae</uri>
-			</mesh>
-		</geometry>
+		<visual name='visual'>
+			<pose>0 0 -0.5 0 0 0</pose>
+			<geometry>
+				<mesh>
+					<uri>model://techtrix_cylinder/meshes/model.dae</uri>
+				</mesh>
+			</geometry>
 
-		<!-- Red color -->
-		<material>
-          <ambient>1 0 0 1</ambient>
-          <diffuse>1 0 0 1</diffuse>
-          <specular>0.1 0.1 0.1 1</specular>
-          <emissive>0 0 0 0</emissive>
-        </material>
-     </visual>
+			<!-- Red color -->
+			<!-- <material name="green">
+				<color rgba="0 1 0 1"/>
+			</material> -->
+			<material>
+				<ambient>1 0 0 1</ambient>
+				<diffuse>1 0 0 1</diffuse>
+				<specular>0.1 0.1 0.1 1</specular>
+				<emissive>1 0 0 1</emissive>
+			</material>
+
+			<!-- <emission>
+              <color sid="emission">1 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">1 0 0 1</color>
+            </ambient> -->
+		</visual>
 	</link>
   </model>
 </sdf>

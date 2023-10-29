@@ -67,7 +67,7 @@ The robot makes use of multiple sensors:
 
 ## Thermal sensor
 
-The thermal sensor can be found as the "thermal_link" link object in the techtrix robot URDF model. As there is no implementation of a thermal sensor in Gazebo classic, we had to implement our own custom Gazebo plugin, based on the camera sensor's plugin. The custom plugin can be found in `gazebo_plugins.xacro`.
+The thermal sensor can be found as the "thermal_link" link object in the techtrix robot URDF model. As there is no official implementation of a thermal sensor in Gazebo classic, we use a Gazebo plugin from [here](https://wiki.ros.org/hector_gazebo_thermal_camera). The custom plugin can be found in `gazebo_plugins.xacro`.
 
 To run it:
 
