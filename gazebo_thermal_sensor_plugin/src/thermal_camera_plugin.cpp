@@ -1,8 +1,5 @@
 #include "thermal_camera.cpp"
 
-// gazebo stuff
-#include <gazebo/plugins/CameraPlugin.hh>
-
 namespace gazebo
 {
 

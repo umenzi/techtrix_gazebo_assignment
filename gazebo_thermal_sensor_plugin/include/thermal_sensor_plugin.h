@@ -1,7 +1,12 @@
 #ifndef GAZEBO_ROS_THERMAL_CAMERA_HH
 #define GAZEBO_ROS_THERMAL_CAMERA_HH
 
-// camera stuff
+#include <string>
+
+// library for processing camera data for gazebo / ros conversions
+#include <gazebo/plugins/CameraPlugin.hh>
+
+// other libraries for gazebo
 #include <gazebo_plugins/gazebo_ros_camera_utils.h>
 
 namespace gazebo
