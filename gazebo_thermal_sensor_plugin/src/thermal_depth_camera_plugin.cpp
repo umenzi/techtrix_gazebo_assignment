@@ -6,14 +6,14 @@
 namespace gazebo
 {
     template <>
-    void GazeboRosThermalCamera_<DepthCameraPlugin>::LoadImpl(sensors::SensorPtr _parent, sdf::ElementPtr _sdf)
+    void GazeboRosThermalSensor_<DepthCameraPlugin>::LoadImpl(sensors::SensorPtr _parent, sdf::ElementPtr _sdf)
     {
         this->camera_ = this->DepthCameraPlugin::depthCamera;
     }
 
-    template class GazeboRosThermalCamera_<DepthCameraPlugin>;
-    typedef GazeboRosThermalCamera_<DepthCameraPlugin> GazeboRosThermalCamera;
+    template class GazeboRosThermalSensor_<DepthCameraPlugin>;
+    typedef GazeboRosThermalSensor_<DepthCameraPlugin> GazeboRosThermalSensor;
 
     // Register this plugin with the simulator
-    GZ_REGISTER_SENSOR_PLUGIN(GazeboRosThermalCamera)
+    GZ_REGISTER_SENSOR_PLUGIN(GazeboRosThermalSensor)
 }

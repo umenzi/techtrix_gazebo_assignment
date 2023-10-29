@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 2.8.3)
-# project(gazebo_light_sensor_plugin)
 project(gazebo_thermal_sensor_plugin)
 
 find_package(catkin REQUIRED COMPONENTS
@@ -28,7 +27,6 @@ include_directories( ${catkin_INCLUDE_DIRS}
                      ${GAZEBO_INCLUDE_DIRS}
 )
 
-# add_library(${PROJECT_NAME} src/light_sensor_plugin.cpp)
 add_library(${PROJECT_NAME} src/thermal_camera_plugin.cpp)
 
 ## Specify libraries to link a library or executable target against

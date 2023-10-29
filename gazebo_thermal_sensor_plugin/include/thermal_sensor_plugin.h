@@ -12,16 +12,16 @@
 namespace gazebo
 {
     template <typename Base>
-    class GazeboRosThermalCamera_ : public Base, GazeboRosCameraUtils
+    class GazeboRosThermalSensor_ : public Base, GazeboRosCameraUtils
     {
         /// \brief Constructor
         /// \param parent The parent entity, must be a Model or a Sensor
     public:
-        GazeboRosThermalCamera_();
+        GazeboRosThermalSensor_();
 
         /// \brief Destructor
     public:
-        ~GazeboRosThermalCamera_();
+        ~GazeboRosThermalSensor_();
 
         /// \brief Load the plugin
         /// \param take in SDF root element

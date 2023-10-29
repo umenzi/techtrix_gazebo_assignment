@@ -13,19 +13,19 @@ namespace gazebo
     ////////////////////////////////////////////////////////////////////////////////
     // Constructor
     template <class Base>
-    GazeboRosThermalCamera_<Base>::GazeboRosThermalCamera_()
+    GazeboRosThermalSensor_<Base>::GazeboRosThermalSensor_()
     {
     }
 
     ////////////////////////////////////////////////////////////////////////////////
     // Destructor
     template <class Base>
-    GazeboRosThermalCamera_<Base>::~GazeboRosThermalCamera_()
+    GazeboRosThermalSensor_<Base>::~GazeboRosThermalSensor_()
     {
     }
 
     template <class Base>
-    void GazeboRosThermalCamera_<Base>::Load(sensors::SensorPtr _parent, sdf::ElementPtr _sdf)
+    void GazeboRosThermalSensor_<Base>::Load(sensors::SensorPtr _parent, sdf::ElementPtr _sdf)
     {
         Base::Load(_parent, _sdf);
         // copying from CameraPlugin into GazeboRosCameraUtils
@@ -48,18 +48,14 @@ namespace gazebo
     ////////////////////////////////////////////////////////////////////////////////
     // Update the controller
     template <class Base>
-    void GazeboRosThermalCamera_<Base>::OnNewFrame(const unsigned char *_image,
+    void GazeboRosThermalSensor_<Base>::OnNewFrame(const unsigned char *_image,
                                                    unsigned int _width, unsigned int _height, unsigned int _depth,
                                                    const std::string &_format)
     {
         if (!this->initialized_ || this->height_ <= 0 || this->width_ <= 0)
             return;
 
-#if (GAZEBO_MAJOR_VERSION > 6)
         this->sensor_update_time_ = this->parentSensor_->LastUpdateTime();
-#else
-        this->sensor_update_time_ = this->parentSensor_->GetLastUpdateTime();
-#endif
 
         if (!this->parentSensor->IsActive())
         {
@@ -71,11 +67,7 @@ namespace gazebo
         {
             if ((*this->image_connect_count_) > 0)
             {
-#if (GAZEBO_MAJOR_VERSION >= 8)
                 common::Time cur_time = this->world_->SimTime();
-#else
-                common::Time cur_time = this->world_->GetSimTime();
-#endif
                 if (cur_time - this->last_update_time_ >= this->update_period_)
                 {
                     this->PutCameraData(_image);
@@ -87,7 +79,7 @@ namespace gazebo
     }
 
     template <class Base>
-    void GazeboRosThermalCamera_<Base>::OnNewImageFrame(const unsigned char *_image,
+    void GazeboRosThermalSensor_<Base>::OnNewImageFrame(const unsigned char *_image,
                                                         unsigned int _width, unsigned int _height, unsigned int _depth,
                                                         const std::string &_format)
     {
@@ -97,14 +89,14 @@ namespace gazebo
     ////////////////////////////////////////////////////////////////////////////////
     // Put camera_ data to the interface
     template <class Base>
-    void GazeboRosThermalCamera_<Base>::PutCameraData(const unsigned char *_src, common::Time &last_update_time)
+    void GazeboRosThermalSensor_<Base>::PutCameraData(const unsigned char *_src, common::Time &last_update_time)
     {
         this->sensor_update_time_ = last_update_time;
         this->PutCameraData(_src);
     }
 
     template <class Base>
-    void GazeboRosThermalCamera_<Base>::PutCameraData(const unsigned char *_src)
+    void GazeboRosThermalSensor_<Base>::PutCameraData(const unsigned char *_src)
     {
         if (!this->initialized_ || this->height_ <= 0 || this->width_ <= 0)
             return;
