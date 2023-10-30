@@ -1,16 +1,9 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="techtrix_robot">
-  <xacro:macro name="default_inertial" params="mass">
-    <inertial>
-      <mass value="${mass}" />
-      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
-    </inertial>
-  </xacro:macro>
-
-  <xacro:property name="pi" value="3.1415926535897931" />
-  <xacro:property name="length" value="1.6" />
-  <xacro:property name="width" value="1.5" />
-  <xacro:property name="height" value="2.3" />
+  <xacro:include filename="$(find techtrix_description)/urdf/macros.xacro"/>
+  <xacro:include filename="$(find techtrix_description)/urdf/techtrix_properties.xacro"/>
+  <xacro:include filename="$(find techtrix_description)/urdf/materials.xacro"/>
+  <xacro:include filename="$(find techtrix_description)/urdf/gazebo_plugins.xacro"/>
 
   <!-- Used for fixing robot to Gazebo 'base_link' -->
   <link name="world"/>
@@ -35,7 +28,79 @@
   </link>
 
   <link name="grabbing_mechanism">
-    <collision>
+    <collision name="grabbing_mechanism_sc_1_top">  
+      <origin xyz="0.551 -0.098 -0.135" rpy="${-pi/2} 0 0" />
+      <geometry>
+        <cylinder radius="0.03" length="0.001" turns="0.5"/>
+      </geometry>
+    </collision>
+    <collision name="grabbing_mechanism_sc_1_bot">  
+      <origin xyz="0.551 -0.098 -0.255" rpy="${-pi/2} 0 0" />
+      <geometry>
+        <cylinder radius="0.03" length="0.001" turns="0.5"/>
+      </geometry>
+    </collision>
+    <collision name="grabbing_mechanism_sc_2_top">  
+      <origin xyz="0.339 -0.098 -0.135" rpy="${-pi/2} 0 0" />
+      <geometry>
+        <cylinder radius="0.03" length="0.001" turns="0.5"/>
+      </geometry>
+    </collision>
+    <collision name="grabbing_mechanism_sc_2_bot">  
+      <origin xyz="0.339 -0.098 -0.255" rpy="${-pi/2} 0 0" />
+      <geometry>
+        <cylinder radius="0.03" length="0.001" turns="0.5"/>
+      </geometry>
+    </collision>
+    <collision name="grabbing_mechanism_sc_3_top">  
+      <origin xyz="0.127 -0.098 -0.135" rpy="${-pi/2} 0 0" />
+      <geometry>
+        <cylinder radius="0.03" length="0.001" turns="0.5"/>
+      </geometry>
+    </collision>
+    <collision name="grabbing_mechanism_sc_3_bot">  
+      <origin xyz="0.127 -0.098 -0.255" rpy="${-pi/2} 0 0" />
+      <geometry>
+        <cylinder radius="0.03" length="0.001" turns="0.5"/>
+      </geometry>
+    </collision>
+    <collision name="grabbing_mechanism_sc_4_top">  
+      <origin xyz="-0.127 -0.098 -0.135" rpy="${-pi/2} 0 0" />
+      <geometry>
+        <cylinder radius="0.03" length="0.001" turns="0.5"/>
+      </geometry>
+    </collision>
+    <collision name="grabbing_mechanism_sc_4_bot">  
+      <origin xyz="-0.127 -0.098 -0.255" rpy="${-pi/2} 0 0" />
+      <geometry>
+        <cylinder radius="0.03" length="0.001" turns="0.5"/>
+      </geometry>
+    </collision>
+    <collision name="grabbing_mechanism_sc_5_top">  
+      <origin xyz="-0.339 -0.098 -0.135" rpy="${-pi/2} 0 0" />
+      <geometry>
+        <cylinder radius="0.03" length="0.001" turns="0.5"/>
+      </geometry>
+    </collision>
+    <collision name="grabbing_mechanism_sc_5_bot">  
+      <origin xyz="-0.339 -0.098 -0.255" rpy="${-pi/2} 0 0" />
+      <geometry>
+        <cylinder radius="0.03" length="0.001" turns="0.5"/>
+      </geometry>
+    </collision>
+    <collision name="grabbing_mechanism_sc_6_top">  
+      <origin xyz="-0.551 -0.098 -0.135" rpy="${-pi/2} 0 0" />
+      <geometry>
+        <cylinder radius="0.03" length="0.001" turns="0.5"/>
+      </geometry>
+    </collision>
+    <collision name="grabbing_mechanism_sc_6_bot">  
+      <origin xyz="-0.551 -0.098 -0.255" rpy="${-pi/2} 0 0" />
+      <geometry>
+        <cylinder radius="0.03" length="0.001" turns="0.5"/>
+      </geometry>
+    </collision>
+    <collision name="grabbing_mechanism_top">
       <origin xyz="0 0 -0.015" />
       <geometry>
         <box size="1.375 0.26 0.03" />

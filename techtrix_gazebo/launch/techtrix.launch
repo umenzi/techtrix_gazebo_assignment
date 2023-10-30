@@ -6,6 +6,7 @@
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find techtrix_gazebo)/worlds/techtrix.world"/>
     <!-- more default parameters can be changed here -->
+    <arg name="verbose" value="true" />
   </include>
 
   <!-- Convert a xacro and put on parameter server -->
