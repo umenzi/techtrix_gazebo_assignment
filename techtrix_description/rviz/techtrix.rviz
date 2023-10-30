@@ -7,18 +7,6 @@ Panels:
         - /Global Options1
         - /Status1
         - /RobotModel1/Links1
-        - /Suction cup 11
-        - /Suction cup 21
-        - /Suction cup 31
-        - /Suction cup 41
-        - /Suction cup 51
-        - /Suction cup 61
-        - /Suction cup 71
-        - /Suction cup 81
-        - /Suction cup 91
-        - /Suction cup 101
-        - /Suction cup 111
-        - /Suction cup 121
       Splitter Ratio: 0.5
     Tree Height: 549
   - Class: rviz/Selection
@@ -38,7 +26,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: LaserScan
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -193,6 +181,34 @@ Visualization Manager:
       Namespaces:
         {}
       Queue Size: 100
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/LaserScan
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Min Color: 0; 0; 0
+      Name: LaserScan
+      Position Transformer: ZXY
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.009999999776482582
+      Style: Flat Squares
+      Topic: /techtrix/laser/sc_1
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
       Value: true
   Enabled: true
   Global Options:

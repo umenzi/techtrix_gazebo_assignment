@@ -27,6 +27,21 @@
     <xacro:default_inertial mass="1"/>
   </link>
 
+    <link name="grabbing_mechanism_l">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.1 0.1 0.1" />
+            </geometry>
+        </visual>
+    </link>
+    <joint name="cdefwamera_joint" type="fixed">
+      <origin xyz="0.551 0 0" rpy="0 0.7 0" />
+      <parent link="grabbing_mechanism"/>
+      <child link="grabbing_mechanism_l" />
+    </joint>
+
+
   <link name="grabbing_mechanism">
     <collision name="grabbing_mechanism_sc_1_top">  
       <origin xyz="0.551 -0.098 -0.135" rpy="${-pi/2} 0 0" />
