@@ -1,0 +1,9 @@
+controller_list:
+  - name: techtrix_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - base_joint
+      - lifting_joint
+      - rotating_joint

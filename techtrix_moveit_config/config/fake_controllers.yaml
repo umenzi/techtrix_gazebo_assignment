@@ -1,0 +1,10 @@
+controller_list:
+  - name: fake_techtrix_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - base_joint
+      - lifting_joint
+      - rotating_joint
+initial:  # Define initial robot poses per group
+  - group: techtrix
+    pose: home_pose

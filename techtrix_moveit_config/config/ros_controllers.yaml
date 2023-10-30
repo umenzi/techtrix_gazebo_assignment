@@ -1,0 +1,22 @@
+techtrix_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints:
+    - base_joint
+    - lifting_joint
+    - rotating_joint
+  gains:
+    base_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    lifting_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    rotating_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1

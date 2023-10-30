@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: techtrix_description
+    relative_path: urdf/techtrix.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/techtrix_robot.srdf
+  CONFIG:
+    author_name: Techtrix
+    author_email: techtrix.rh@outlook.com
+    generated_timestamp: 1698667174
