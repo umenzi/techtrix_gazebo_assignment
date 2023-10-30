@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <sdf version='1.4'>
-  <model name="techtrix_cylinder">
+  <model name="techtrix_worker">
   	<static>false</static>
   	
   	<!-- We simply show the model, and for now we do not include any collisions -->
@@ -22,31 +22,26 @@
 			<pose>0 0 0 0 0 0</pose>
 			<geometry>
 				<box>
-					<size>0.5 0.5 1</size>
+					<size>0.5 0.5 1.5</size>
 				</box>
 				<!-- <mesh>
-					<uri>model://techtrix_cylinder/meshes/model.dae</uri>
+					<uri>model://techtrix_worker/meshes/model.dae</uri>
 				</mesh> -->
 			</geometry>
 		</collision>
 
 		<visual name='visual'>
-			<pose>0 0 -0.5 0 0 0</pose>
+			<pose>0 0 0.66 0 0 0</pose>
 			<geometry>
 				<mesh>
-					<uri>model://techtrix_cylinder/meshes/model.dae</uri>
+					<uri>model://techtrix_worker/meshes/model.dae</uri>
 				</mesh>
 			</geometry>
 
-			<!-- Red color -->
-			<!-- <material name="green">
-				<color rgba="0 1 0 1"/>
-			</material> -->
+			<!-- The worker must be detected by the thermal sensor -->
 			<material>
-				<ambient>0.3 0 0 0.3</ambient>
-				<diffuse>1 0 0 1</diffuse>
-				<specular>0.1 0.1 0.1 1</specular>
-				<emissive>0.1 0 0 0.1</emissive>
+				<ambient>1 0 0 1</ambient>
+				<emissive>1 0 0 1</emissive>
 			</material>
 
 			<!-- <emission>
