@@ -183,7 +183,7 @@
     </sensor>
   </gazebo>
 
-  <gazebo reference="grabbing_mechanism_l">
+  <gazebo reference="grabbing_mechanism_sc_1_laser">
     <sensor type="ray" name="sc_1_laser">
       <visualize>true</visualize>
       <update_rate>40</update_rate>
@@ -205,13 +205,12 @@
       <plugin name="sc_1_laser_controller" filename="libgazebo_ros_laser.so">
         <robotNamespace>techtrix</robotNamespace>
         <topicName>/techtrix/laser/sc_1</topicName>
-        <frameName>grabbing_mechanism_l</frameName>
+        <frameName>grabbing_mechanism_sc_1_laser</frameName>
       </plugin>
     </sensor>
   </gazebo>
-  <gazebo reference="grabbing_mechanism">
+  <gazebo reference="grabbing_mechanism_sc_2_laser">
     <sensor type="ray" name="sc_2_laser">
-      <pose>0.339 0 0 0 ${pi/2} 0</pose>
       <visualize>true</visualize>
       <update_rate>40</update_rate>
       <ray>
@@ -224,7 +223,7 @@
           </horizontal>
         </scan>
         <range>
-          <min>0.0</min>
+          <min>0.1</min>
           <max>30.0</max>
           <resolution>0.01</resolution>
         </range>
@@ -232,13 +231,12 @@
       <plugin name="sc_2_laser_controller" filename="libgazebo_ros_laser.so">
         <robotNamespace>techtrix</robotNamespace>
         <topicName>/techtrix/laser/sc_2</topicName>
-        <frameName>grabbing_mechanism</frameName>
+        <frameName>grabbing_mechanism_sc_2_laser</frameName>
       </plugin>
     </sensor>
   </gazebo>
-  <gazebo reference="grabbing_mechanism">
+  <gazebo reference="grabbing_mechanism_sc_3_laser">
     <sensor type="ray" name="sc_3_laser">
-      <pose>0.127 0 0 0 ${pi/2} 0</pose>
       <visualize>true</visualize>
       <update_rate>40</update_rate>
       <ray>
@@ -251,7 +249,7 @@
           </horizontal>
         </scan>
         <range>
-          <min>0.0</min>
+          <min>0.1</min>
           <max>30.0</max>
           <resolution>0.01</resolution>
         </range>
@@ -259,13 +257,12 @@
       <plugin name="sc_3_laser_controller" filename="libgazebo_ros_laser.so">
         <robotNamespace>techtrix</robotNamespace>
         <topicName>/techtrix/laser/sc_3</topicName>
-        <frameName>grabbing_mechanism</frameName>
+        <frameName>grabbing_mechanism_sc_3_laser</frameName>
       </plugin>
     </sensor>
   </gazebo>
-  <gazebo reference="grabbing_mechanism">
+  <gazebo reference="grabbing_mechanism_sc_4_laser">
     <sensor type="ray" name="sc_4_laser">
-      <pose>-0.127 0 0 0 ${pi/2} 0</pose>
       <visualize>true</visualize>
       <update_rate>40</update_rate>
       <ray>
@@ -278,7 +275,7 @@
           </horizontal>
         </scan>
         <range>
-          <min>0.0</min>
+          <min>0.1</min>
           <max>30.0</max>
           <resolution>0.01</resolution>
         </range>
@@ -286,13 +283,12 @@
       <plugin name="sc_4_laser_controller" filename="libgazebo_ros_laser.so">
         <robotNamespace>techtrix</robotNamespace>
         <topicName>/techtrix/laser/sc_4</topicName>
-        <frameName>grabbing_mechanism</frameName>
+        <frameName>grabbing_mechanism_sc_4_laser</frameName>
       </plugin>
     </sensor>
   </gazebo>
-  <gazebo reference="grabbing_mechanism">
+  <gazebo reference="grabbing_mechanism_sc_5_laser">
     <sensor type="ray" name="sc_5_laser">
-      <pose>-0.339 0 0 0 ${pi/2} 0</pose>
       <visualize>true</visualize>
       <update_rate>40</update_rate>
       <ray>
@@ -305,7 +301,7 @@
           </horizontal>
         </scan>
         <range>
-          <min>0.0</min>
+          <min>0.1</min>
           <max>30.0</max>
           <resolution>0.01</resolution>
         </range>
@@ -313,13 +309,12 @@
       <plugin name="sc_5_laser_controller" filename="libgazebo_ros_laser.so">
         <robotNamespace>techtrix</robotNamespace>
         <topicName>/techtrix/laser/sc_5</topicName>
-        <frameName>grabbing_mechanism</frameName>
+        <frameName>grabbing_mechanism_sc_5_laser</frameName>
       </plugin>
     </sensor>
   </gazebo>
-  <gazebo reference="grabbing_mechanism">
+  <gazebo reference="grabbing_mechanism_sc_6_laser">
     <sensor type="ray" name="sc_6_laser">
-      <pose>-0.551 0 0 0 ${pi/2} 0</pose>
       <visualize>true</visualize>
       <update_rate>40</update_rate>
       <ray>
@@ -332,7 +327,7 @@
           </horizontal>
         </scan>
         <range>
-          <min>0.0</min>
+          <min>0.1</min>
           <max>30.0</max>
           <resolution>0.01</resolution>
         </range>
@@ -340,7 +335,7 @@
       <plugin name="sc_6_laser_controller" filename="libgazebo_ros_laser.so">
         <robotNamespace>techtrix</robotNamespace>
         <topicName>/techtrix/laser/sc_6</topicName>
-        <frameName>grabbing_mechanism</frameName>
+        <frameName>grabbing_mechanism_sc_6_laser</frameName>
       </plugin>
     </sensor>
   </gazebo>

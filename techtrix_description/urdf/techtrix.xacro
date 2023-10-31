@@ -27,20 +27,89 @@
     <xacro:default_inertial mass="1"/>
   </link>
 
-    <link name="grabbing_mechanism_l">
-        <visual>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <box size="0.1 0.1 0.1" />
-            </geometry>
-        </visual>
-    </link>
-    <joint name="cdefwamera_joint" type="fixed">
-      <origin xyz="0.551 0 0" rpy="0 0.7 0" />
-      <parent link="grabbing_mechanism"/>
-      <child link="grabbing_mechanism_l" />
-    </joint>
+  <link name="grabbing_mechanism_sc_1_laser">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.01 0.01 0.01" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="grabbing_mechanism_sc_1_laser_joint" type="fixed">
+    <origin xyz="0.551 0 0" rpy="0 ${pi/2} 0" />
+    <parent link="grabbing_mechanism"/>
+    <child link="grabbing_mechanism_sc_1_laser" />
+  </joint>
 
+  <link name="grabbing_mechanism_sc_2_laser">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.01 0.01 0.01" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="grabbing_mechanism_sc_2_laser_joint" type="fixed">
+    <origin xyz="0.339 0 0" rpy="0 ${pi/2} 0" />
+    <parent link="grabbing_mechanism"/>
+    <child link="grabbing_mechanism_sc_2_laser" />
+  </joint>
+
+  <link name="grabbing_mechanism_sc_3_laser">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.01 0.01 0.01" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="grabbing_mechanism_sc_3_laser_joint" type="fixed">
+    <origin xyz="0.127 0 0" rpy="0 ${pi/2} 0" />
+    <parent link="grabbing_mechanism"/>
+    <child link="grabbing_mechanism_sc_3_laser" />
+  </joint>
+
+  <link name="grabbing_mechanism_sc_4_laser">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.01 0.01 0.01" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="grabbing_mechanism_sc_4_laser_joint" type="fixed">
+    <origin xyz="-0.127 0 0" rpy="0 ${pi/2} 0" />
+    <parent link="grabbing_mechanism"/>
+    <child link="grabbing_mechanism_sc_4_laser" />
+  </joint>
+
+  <link name="grabbing_mechanism_sc_5_laser">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.01 0.01 0.01" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="grabbing_mechanism_sc_5_laser_joint" type="fixed">
+    <origin xyz="-0.339 0 0" rpy="0 ${pi/2} 0" />
+    <parent link="grabbing_mechanism"/>
+    <child link="grabbing_mechanism_sc_5_laser" />
+  </joint>
+
+  <link name="grabbing_mechanism_sc_6_laser">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.01 0.01 0.01" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="grabbing_mechanism_sc_6_laser_joint" type="fixed">
+    <origin xyz="-0.551 0 0" rpy="0 ${pi/2} 0" />
+    <parent link="grabbing_mechanism"/>
+    <child link="grabbing_mechanism_sc_6_laser" />
+  </joint>
 
   <link name="grabbing_mechanism">
     <collision name="grabbing_mechanism_sc_1_top">  
