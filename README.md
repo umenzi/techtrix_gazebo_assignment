@@ -57,3 +57,51 @@ The repository consists of three different ROS packages:
 - `techtrix_description` contains the model and basic functionality of the TechTrix robot.
   For example, the robot model can be found in the `techtrix_robot` folder.
 - `techtrix_control` contains the ROS code which controls what happens in the simulation.
+
+# Sensors
+
+The robot makes use of multiple sensors:
+
+- **Thermal sensor**: The robot uses a thermal sensor to detect if humans are too close to the conveyor belt.
+    If a human is detected, the robot will shut down for safety reasons.
+- TODO
+
+## Thermal sensor
+
+The TechTrix robot uses a **thermal sensor** to detect when humans are too close to the conveyor belt and automatically 
+stops operations.
+
+The thermal sensor is located in the `camera_link` object of the TechTrix robot URDF model.
+Since there is no official implementation of a thermal sensor in Gazebo classic, a Gazebo plugin is used,
+located in the `gazebo_thermal_sensor_plugin` folder.
+
+To run the thermal sensor in the simulation:
+
+1. Launch the Gazebo simulation: `roslaunch techtrix_gazebo techtrix.launch`.
+2. Launch RViz: `roslaunch techtrix_gazebo techtrix_rviz.launch`.
+
+- You should now see a window showing the thermal sensor's output.
+- If you don't see the thermal sensor output, add a `Camera` display to RViz.
+    Under `Image Topic`, set the `Camera` display to `/techtrix/thermal1/image_raw`.
+- The thermal sensor output image is similar to the normal camera image (also shown in the RViz simulation), 
+  but everything is much darker.
+- The objects of interest are shown much brighter.
+  They are modeled using COLLADA and their emissive and ambient material properties are set to maximum red:
+  ```xml
+    <emission>
+      <color sid="emission">1 0 0 1</color>
+    </emission>
+    <ambient>
+      <color sid="ambient">1 0 0 1</color>
+    </ambient>
+  ```
+3. Initially, no objects are shown as bright, even when spanning cylinders.
+   However, there is a human in the scene, although initially they are far away from the conveyor belt:
+   ![human_far_away.png](readme_images%2Fhuman_far_away.png)
+4. But what happens if we move the human close to the conveyor belt? They will appear in the thermal output as a lot of bright white pixels.
+   ![human_far_away.png](readme_images%2Fhuman_next_to_belt.png)
+5. To start the thermal sensor, run:
+   ```
+   roslaunch techtrix_control techtrix_thermal.launch
+   ```
+   Whenever a human is found close to the conveyor belt, the Gazebo world will be reset, moving the human far away again.
