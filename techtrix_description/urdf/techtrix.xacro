@@ -112,6 +112,7 @@
   </joint>
 
   <link name="grabbing_mechanism">
+    <kinematic>true</kinematic>
     <collision name="grabbing_mechanism_sc_1_top">  
       <origin xyz="0.551 -0.098 -0.135" rpy="${-pi/2} 0 0" />
       <geometry>

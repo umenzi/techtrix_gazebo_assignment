@@ -43,7 +43,8 @@ namespace gazebo
     private: float x;
     private: float y;
     private: float z;
-    private: std::string marker_namespace;
+    private: std::string markerPublish;
+    private: int markerId;
   };
 }
 #endif

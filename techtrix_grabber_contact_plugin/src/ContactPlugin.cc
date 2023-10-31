@@ -33,7 +33,8 @@ void ContactPlugin::Load(sensors::SensorPtr _sensor, sdf::ElementPtr _sdf)
   this->x = _sdf->Get<double>("collision_x");
   this->y = _sdf->Get<double>("collision_y");
   this->z = _sdf->Get<double>("collision_z");
-  this->marker_namespace = _sdf->GetElement("marker_namespace")->Get<std::string>();
+  this->markerPublish = _sdf->GetElement("marker_publish")->Get<std::string>();
+  this->markerId = _sdf->Get<int>("marker_id"); 
 
   // Connect to the sensor update event.
   this->updateConnection = this->parentSensor->ConnectUpdated(
@@ -51,7 +52,7 @@ void ContactPlugin::Load(sensors::SensorPtr _sensor, sdf::ElementPtr _sdf)
   ROS_INFO("Loading");
 
   this->nh = new ros::NodeHandle("/techtrix");
-  this->markerPub = this->nh->advertise<visualization_msgs::Marker>(this->marker_namespace, 10); 
+  this->markerPub = this->nh->advertise<visualization_msgs::Marker>(this->markerPublish, 10); 
 }
 
 /////////////////////////////////////////////////
@@ -67,7 +68,7 @@ void ContactPlugin::OnUpdate()
         marker.header.frame_id = "grabbing_mechanism";
         marker.header.stamp = ros::Time::now();
         marker.ns = "collision_markers";
-        marker.id = 1;
+        marker.id = this->markerId;
         marker.type = visualization_msgs::Marker::SPHERE;
         marker.action = visualization_msgs::Marker::ADD;
         marker.pose.position.x = this->x;
@@ -85,6 +86,5 @@ void ContactPlugin::OnUpdate()
         marker.lifetime = ros::Duration(0.1);
 
         markerPub.publish(marker);
-        ROS_INFO("published");    
     }
 }

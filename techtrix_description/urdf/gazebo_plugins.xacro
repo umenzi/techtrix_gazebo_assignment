@@ -13,172 +13,162 @@
         <collision_x>0.551</collision_x>
         <collision_y>-0.098</collision_y>
         <collision_z>-0.135</collision_z>
-        <marker_namespace>sc_1_top</marker_namespace>
+        <marker_publish>sc_1_top</marker_publish>
+        <marker_id>1</marker_id>
       </plugin>
     </sensor>
-  </gazebo>
-  <gazebo reference="grabbing_mechanism">
     <sensor name='grabber_contact_sensor_sc_1_bot' type='contact'>
       <always_on>true</always_on> 
       <update_rate>100</update_rate> 
       <contact>
-        <collision>grabbing_mechanism_sc_1_bot_collision</collision>
+        <collision>grabbing_mechanism_sc_1_bot_collision_1</collision>
       </contact>
       <plugin name="contact_plugin_sc_1_bot" filename="libGrabberContactPlugin.so">
         <collision_x>0.551</collision_x>
         <collision_y>-0.098</collision_y>
         <collision_z>-0.255</collision_z>
-        <marker_namespace>sc_1_bot</marker_namespace>
+        <marker_publish>sc_1_bot</marker_publish>
+        <marker_id>2</marker_id>
       </plugin>
     </sensor>
-  </gazebo>
-  <gazebo reference="grabbing_mechanism">
     <sensor name='grabber_contact_sensor_sc_2_top' type='contact'>
       <always_on>true</always_on> 
       <update_rate>100</update_rate> 
       <contact>
-        <collision>grabbing_mechanism_sc_2_top_collision</collision>
+        <collision>grabbing_mechanism_sc_2_top_collision_2</collision>
       </contact>
       <plugin name="contact_plugin_sc_2_top" filename="libGrabberContactPlugin.so">
         <collision_x>0.339</collision_x>
         <collision_y>-0.098</collision_y>
         <collision_z>-0.135</collision_z>
-        <marker_namespace>sc_2_top</marker_namespace>
+        <marker_publish>sc_2_top</marker_publish>
+        <marker_id>3</marker_id>
       </plugin>
     </sensor>
-  </gazebo>
-  <gazebo reference="grabbing_mechanism">
     <sensor name='grabber_contact_sensor_sc_2_bot' type='contact'>
       <always_on>true</always_on> 
       <update_rate>100</update_rate> 
       <contact>
-        <collision>grabbing_mechanism_sc_2_bot_collision</collision>
+        <collision>grabbing_mechanism_sc_2_bot_collision_3</collision>
       </contact>
       <plugin name="contact_plugin_sc_2_bot" filename="libGrabberContactPlugin.so">
         <collision_x>0.339</collision_x>
         <collision_y>-0.098</collision_y>
         <collision_z>-0.255</collision_z>
-        <marker_namespace>sc_2_bot</marker_namespace>
+        <marker_publish>sc_2_bot</marker_publish>
+        <marker_id>4</marker_id>
       </plugin>
     </sensor>
-  </gazebo>
-  <gazebo reference="grabbing_mechanism">
     <sensor name='grabber_contact_sensor_sc_3_top' type='contact'>
       <always_on>true</always_on> 
       <update_rate>100</update_rate> 
       <contact>
-        <collision>grabbing_mechanism_sc_3_top_collision</collision>
+        <collision>grabbing_mechanism_sc_3_top_collision_4</collision>
       </contact>
       <plugin name="contact_plugin_sc_3_top" filename="libGrabberContactPlugin.so">
         <collision_x>0.127</collision_x>
         <collision_y>-0.098</collision_y>
-        <collision_z>-0.135</collision_z>
-        <marker_namespace>sc_3_top</marker_namespace>
+        <collision_z>-0.135</collision_z>   
+        <marker_publish>sc_3_top</marker_publish>
+        <marker_id>5</marker_id>
       </plugin>
     </sensor>
-  </gazebo>
-  <gazebo reference="grabbing_mechanism">
     <sensor name='grabber_contact_sensor_sc_3_bot' type='contact'>
       <always_on>true</always_on> 
       <update_rate>100</update_rate> 
       <contact>
-        <collision>grabbing_mechanism_sc_3_bot_collision</collision>
+        <collision>grabbing_mechanism_sc_3_bot_collision_5</collision>
       </contact>
       <plugin name="contact_plugin_sc_3_bot" filename="libGrabberContactPlugin.so">
         <collision_x>0.127</collision_x>
         <collision_y>-0.098</collision_y>
         <collision_z>-0.255</collision_z>
-        <marker_namespace>sc_3_bot</marker_namespace>
+        <marker_publish>sc_3_bot</marker_publish>
+        <marker_id>6</marker_id>
       </plugin>
     </sensor>
-  </gazebo>
-  <gazebo reference="grabbing_mechanism">
     <sensor name='grabber_contact_sensor_sc_4_top' type='contact'>
       <always_on>true</always_on> 
       <update_rate>100</update_rate> 
       <contact>
-        <collision>grabbing_mechanism_sc_4_top_collision</collision>
+        <collision>grabbing_mechanism_sc_4_top_collision_6</collision>
       </contact>
       <plugin name="contact_plugin_sc_4_top" filename="libGrabberContactPlugin.so">
         <collision_x>-0.127</collision_x>
         <collision_y>-0.098</collision_y>
         <collision_z>-0.135</collision_z>
-        <marker_namespace>sc_4_top</marker_namespace>
+        <marker_publish>sc_4_top</marker_publish>
+        <marker_id>7</marker_id>
       </plugin>
     </sensor>
-  </gazebo>
-  <gazebo reference="grabbing_mechanism">
     <sensor name='grabber_contact_sensor_sc_4_bot' type='contact'>
       <always_on>true</always_on> 
       <update_rate>100</update_rate> 
       <contact>
-        <collision>grabbing_mechanism_sc_4_bot_collision</collision>
+        <collision>grabbing_mechanism_sc_4_bot_collision_7</collision>
       </contact>
       <plugin name="contact_plugin_sc_4_bot" filename="libGrabberContactPlugin.so">
         <collision_x>-0.127</collision_x>
         <collision_y>-0.098</collision_y>
         <collision_z>-0.255</collision_z>
-        <marker_namespace>sc_4_bot</marker_namespace>
+        <marker_publish>sc_4_bot</marker_publish>
+        <marker_id>8</marker_id>
       </plugin>
     </sensor>
-  </gazebo>
-  <gazebo reference="grabbing_mechanism">
     <sensor name='grabber_contact_sensor_sc_5_top' type='contact'>
       <always_on>true</always_on> 
       <update_rate>100</update_rate> 
       <contact>
-        <collision>grabbing_mechanism_sc_5_top_collision</collision>
+        <collision>grabbing_mechanism_sc_5_top_collision_8</collision>
       </contact>
       <plugin name="contact_plugin_sc_5_top" filename="libGrabberContactPlugin.so">
         <collision_x>-0.339</collision_x>
         <collision_y>-0.098</collision_y>
         <collision_z>-0.135</collision_z>
-        <marker_namespace>sc_5_top</marker_namespace>
+        <marker_publish>sc_5_top</marker_publish>
+        <marker_id>9</marker_id>
       </plugin>
     </sensor>
-  </gazebo>
-  <gazebo reference="grabbing_mechanism">
     <sensor name='grabber_contact_sensor_sc_5_bot' type='contact'>
       <always_on>true</always_on> 
       <update_rate>100</update_rate> 
       <contact>
-        <collision>grabbing_mechanism_sc_5_bot_collision</collision>
+        <collision>grabbing_mechanism_sc_5_bot_collision_9</collision>
       </contact>
       <plugin name="contact_plugin_sc_5_bot" filename="libGrabberContactPlugin.so">
         <collision_x>-0.339</collision_x>
         <collision_y>-0.098</collision_y>
         <collision_z>-0.255</collision_z>
-        <marker_namespace>sc_5_bot</marker_namespace>
+        <marker_publish>sc_5_bot</marker_publish>
+        <marker_id>10</marker_id>
       </plugin>
     </sensor>
-  </gazebo>
-  <gazebo reference="grabbing_mechanism">
     <sensor name='grabber_contact_sensor_sc_6_top' type='contact'>
       <always_on>true</always_on> 
       <update_rate>100</update_rate> 
       <contact>
-        <collision>grabbing_mechanism_sc_6_top_collision</collision>
+        <collision>grabbing_mechanism_sc_6_top_collision_10</collision>
       </contact>
       <plugin name="contact_plugin_sc_6_top" filename="libGrabberContactPlugin.so">
         <collision_x>-0.551</collision_x>
         <collision_y>-0.098</collision_y>
         <collision_z>-0.135</collision_z>
-        <marker_namespace>sc_6_top</marker_namespace>
+        <marker_publish>sc_6_top</marker_publish>
+        <marker_id>11</marker_id>
       </plugin>
     </sensor>
-  </gazebo>
-  <gazebo reference="grabbing_mechanism">
     <sensor name='grabber_contact_sensor_sc_6_bot' type='contact'>
       <always_on>true</always_on> 
       <update_rate>100</update_rate> 
       <contact>
-        <collision>grabbing_mechanism_sc_6_bot_collision</collision>
+        <collision>grabbing_mechanism_sc_6_bot_collision_11</collision>
       </contact>
       <plugin name="contact_plugin_sc_6_bot" filename="libGrabberContactPlugin.so">
         <collision_x>-0.551</collision_x>
         <collision_y>-0.098</collision_y>
         <collision_z>-0.255</collision_z>
-        <marker_namespace>sc_6_bot</marker_namespace>
+        <marker_publish>sc_6_bot</marker_publish>
+        <marker_id>12</marker_id>
       </plugin>
     </sensor>
   </gazebo>
@@ -197,7 +187,7 @@
           </horizontal>
         </scan>
         <range>
-          <min>0.1</min>
+          <min>0.05</min>
           <max>30.0</max>
           <resolution>0.01</resolution>
         </range>
@@ -223,7 +213,7 @@
           </horizontal>
         </scan>
         <range>
-          <min>0.1</min>
+          <min>0.05</min>
           <max>30.0</max>
           <resolution>0.01</resolution>
         </range>
@@ -249,7 +239,7 @@
           </horizontal>
         </scan>
         <range>
-          <min>0.1</min>
+          <min>0.05</min>
           <max>30.0</max>
           <resolution>0.01</resolution>
         </range>
@@ -275,7 +265,7 @@
           </horizontal>
         </scan>
         <range>
-          <min>0.1</min>
+          <min>0.05</min>
           <max>30.0</max>
           <resolution>0.01</resolution>
         </range>
@@ -301,7 +291,7 @@
           </horizontal>
         </scan>
         <range>
-          <min>0.1</min>
+          <min>0.05</min>
           <max>30.0</max>
           <resolution>0.01</resolution>
         </range>
@@ -327,7 +317,7 @@
           </horizontal>
         </scan>
         <range>
-          <min>0.1</min>
+          <min>0.05</min>
           <max>30.0</max>
           <resolution>0.01</resolution>
         </range>
