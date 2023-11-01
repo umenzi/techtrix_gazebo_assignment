@@ -1,0 +1,4 @@
+<launch>
+  <!-- Thermal sensor behaviour -->
+  <node name="thermal_sensor_behaviour" pkg="techtrix_control" type="thermal.py" />
+</launch>

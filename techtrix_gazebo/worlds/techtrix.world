@@ -86,5 +86,12 @@
     </include>
 
     <plugin name="grabber_world_plugin" filename="libtechtrix_grabber_world_plugin.so"/>
+    
+    <!-- We load the human worker -->
+    <include>
+    		<uri>model://techtrix_worker</uri>
+        <name>Techtrix worker</name>
+        <pose>3.16 6.23 0.75 0 0 -1.57</pose>
+    </include>
   </world>
 </sdf>

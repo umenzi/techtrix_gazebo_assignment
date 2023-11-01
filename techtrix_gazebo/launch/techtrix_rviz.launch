@@ -7,7 +7,6 @@
     <node name="joint_state_publisher_gui_rviz" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
 
     <!-- Rviz-->
-    <!-- <node name="rviz" pkg="rviz" type="rviz" required="true"/> -->
     <node name="rviz" pkg="rviz" type="rviz" required="true" 
         args="-d $(find techtrix_description)/rviz/techtrix.rviz"/>
 </launch>

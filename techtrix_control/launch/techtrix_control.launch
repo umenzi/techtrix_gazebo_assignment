@@ -4,6 +4,8 @@
   <!-- Load joint controller configurations from YAML file to parameter server -->
   <rosparam file="$(find techtrix_control)/config/techtrix_control.yaml" command="load"/>
 
+  <!-- Gazebo -->
+  
   <!-- load the controllers -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/techtrix" args="base_joint_position_controller lifting_joint_position_controller rotating_joint_position_controller joint_state_controller"/>
 
@@ -11,6 +13,8 @@
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
     <remap from="/joint_states" to="/techtrix/joint_states" />
   </node>
+  
+  <!-- Scripts -->
 
   <!-- Spawns cylinders in the environment -->
   <node name="spawn_and_move_cylinders" pkg="techtrix_control" type="cylinders.py" />

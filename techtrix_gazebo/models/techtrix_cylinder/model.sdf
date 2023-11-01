@@ -38,14 +38,24 @@
 			</mesh>
 		</geometry>
 
-		<!-- Red color -->
-		<material>
-          <ambient>1 0 0 1</ambient>
-          <diffuse>1 0 0 1</diffuse>
-          <specular>0.1 0.1 0.1 1</specular>
-          <emissive>0 0 0 0</emissive>
-        </material>
-     </visual>
+			<!-- Red color -->
+			<!-- <material name="green">
+				<color rgba="0 1 0 1"/>
+			</material> -->
+			<material>
+				<ambient>0.3 0 0 0.3</ambient>
+				<diffuse>1 0 0 1</diffuse>
+				<specular>0.1 0.1 0.1 1</specular>
+				<emissive>0.1 0 0 0.1</emissive>
+			</material>
+
+			<!-- <emission>
+              <color sid="emission">1 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">1 0 0 1</color>
+            </ambient> -->
+		</visual>
 	</link>
   </model>
 </sdf>
