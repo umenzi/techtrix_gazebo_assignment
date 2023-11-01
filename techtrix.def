@@ -1,0 +1,23 @@
+Bootstrap: docker
+From: ros:noetic
+
+%files
+    gazebo_thermal_sensor_plugin    /catkin_ws/src/gazebo_thermal_sensor_plugin
+    techtrix_control                /catkin_ws/src/techtrix_control
+    techtrix_description            /catkin_ws/src/techtrix_description
+    techtrix_gazebo                 /catkin_ws/src/techtrix_gazebo
+    startup.sh
+
+%post
+    apt-get update && apt-get install -y \
+        python3-catkin-tools \
+        ros-noetic-xacro
+    . /opt/ros/noetic/setup.sh
+    cd /catkin_ws
+    rosdep update
+    rosdep install --from-paths src --ignore-src -r -y
+    catkin build
+    chmod +x /startup.sh
+
+%runscript
+    exec /startup.sh
