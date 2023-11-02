@@ -8,6 +8,7 @@
 #include <ros/ros.h>
 #include <gazebo_msgs/ContactState.h>
 #include "std_msgs/Float64.h"
+#include "control_msgs/JointControllerState.h"
 
 namespace gazebo
 {
@@ -27,8 +28,10 @@ namespace gazebo
 
         private: event::ConnectionPtr update_connection;
         private: bool should_stop_robot = false;
+        private: float set_point;
 
         private: ros::Publisher pub;
+        private: ros::Subscriber sub;
 
         public: GrabberModelPlugin() :
             nh("grabber_world_plugin_node") 
@@ -48,7 +51,9 @@ namespace gazebo
             this->node = gazebo::transport::NodePtr(new gazebo::transport::Node());
             this->node->Init();
 
-            pub = this->nh.advertise<std_msgs::Float64>("/techtrix/lifting_joint_position_controller/command", 10);
+            this->pub = this->nh.advertise<std_msgs::Float64>("/techtrix/lifting_joint_position_controller/command", 10);
+            this->sub = this->nh.subscribe("/techtrix/lifting_joint_position_controller/state", 1, &GrabberModelPlugin::state_callback, this);
+
 
             // subscribe to contact sensors updates
             std::string topic = "/gazebo/default/techtrix_robot/grabbing_mechanism/sc_1_laser/scan";
@@ -80,13 +85,23 @@ namespace gazebo
                     return;
                 }
 
-                std_msgs::Float64 stop_command;
-                stop_command.data = joint_ptr->Position(0) > -1.857 ? joint_ptr->Position(0) : -1.857;
+                // only stop the mechanism if going down
+                if (this->set_point <= joint_ptr->Position()) 
+                {
+                    std_msgs::Float64 stop_command;
+                    stop_command.data = joint_ptr->Position(0) > -1.857 ? joint_ptr->Position(0) : -1.857;
 
-                pub.publish(stop_command);
+                    ROS_INFO_STREAM("Stopping the lifting mechanism");
+                    pub.publish(stop_command);
+                }
 
                 this->should_stop_robot = false;
             }
+        }
+
+        private: void state_callback(const control_msgs::JointControllerState& msg) 
+        {
+            this->set_point = msg.set_point;
         }
 
         private: void laser_callback(ConstLaserScanStampedPtr& msg)
