@@ -4,6 +4,8 @@ This repository contains the code to run the simulation of the TechTrix robot fo
 
 ## Prerequisites
 
+Our simulation requires ROS, Gazebo and gazebo_ros_pkgs to be installed. If you only want to run the Singularity image, you can continue reading [here](#singularity-image).
+
 Install the gazebo_ros_pkgs [here](https://classic.gazebosim.org/tutorials?tut=ros_installing&cat=connect_ros)
 
 Install ros-noetic-ros-control and ros-noetic-ros-controllers:
@@ -87,10 +89,10 @@ The robot makes use of multiple sensors:
 
 - **Thermal sensor**: The robot uses a thermal sensor to detect if humans are too close to the conveyor belt.
   If a human is detected, the robot will shut down for safety reasons.
-- **Contact sensors**: Each suction cup of the robot's grabber is equipped with a contact sensor. 
- Based on these sensors the suction cups are being activated once the operator issues a command.
-- **Laser sensors**: The grabber of the robot is equipped with laser sensors to prevent the grabber 
- of hitting the cylinders while going down.
+- **Contact sensors**: Each suction cup of the robot's grabber is equipped with a contact sensor.
+  Based on these sensors the suction cups are being activated once the operator issues a command.
+- **Laser sensors**: The grabber of the robot is equipped with laser sensors to prevent the grabber
+  of hitting the cylinders while going down.
 
 ## Thermal sensor
 
@@ -134,52 +136,64 @@ To run the thermal sensor in the simulation:
    Whenever a human is found close to the conveyor belt, the Gazebo world will be reset, moving the human far away again.
 
 ## Contact sensors
+
 The suction cups of the grabber use contact sensors to detect objects that need to be picked up.
 
 ### Visualization
-  To visualize the sensors in RViz, we have created the `techtrix_grabber_contact_plugin` which publishes markers.
-  The red sphere markers indicate the specific sensor is currently making a contact.
 
-  ![no_contacts.png](readme_images%2Fno_contacts.png)
-  ![contacts.png](readme_images%2Fcontacts.png)
+To visualize the sensors in RViz, we have created the `techtrix_grabber_contact_plugin` which publishes markers.
+The red sphere markers indicate the specific sensor is currently making a contact.
+
+![no_contacts.png](readme_images%2Fno_contacts.png)
+![contacts.png](readme_images%2Fcontacts.png)
+
 ### Implementation
-  The sensors are implemented in `techtrix_grabber_world_plugin` - a plugin that manages the suction cups—allowing 
-  them to pick up and let go of objects that make contact with the suction cups/contact sensors automatically.
 
-  The plugin allows the grabbing to be turned on:
-  ```
-  rosservice call /grabber_world_plugin_node/grabber "is_on: true" 
-  ```
-  and off:
-  ```
-  rosservice call /grabber_world_plugin_node/grabber "is_on: false" 
-  ```
+The sensors are implemented in `techtrix_grabber_world_plugin` - a plugin that manages the suction cups—allowing
+them to pick up and let go of objects that make contact with the suction cups/contact sensors automatically.
 
-  The idea behind the plugin is that it reads the topics provided by the sensors and if there is a collision/contact 
-  (you should see the red markers in RViz) and the grabbing is on (based on the service it advertises), 
-  then it dynamically creates a link between the grabber and the object.
-  See the demo.
+The plugin allows the grabbing to be turned on:
+
+```
+rosservice call /grabber_world_plugin_node/grabber "is_on: true"
+```
+
+and off:
+
+```
+rosservice call /grabber_world_plugin_node/grabber "is_on: false"
+```
+
+The idea behind the plugin is that it reads the topics provided by the sensors and if there is a collision/contact
+(you should see the red markers in RViz) and the grabbing is on (based on the service it advertises),
+then it dynamically creates a link between the grabber and the object.
+See the demo.
 
 ## Laser sensors
+
 The laser sensors function as a safety mechanism to prevent the grabber/lifting mechanism from hitting the cylinders while going down.
+
 ### Visualization
-  For visualization in RViz,
-  we are using an already existing plugin that creates red dots where the laser meets an object.
 
-  ![lasers1.png](readme_images%2Flasers1.png)
-  ![lasers2.png](readme_images%2Flasers2.png)
+For visualization in RViz,
+we are using an already existing plugin that creates red dots where the laser meets an object.
+
+![lasers1.png](readme_images%2Flasers1.png)
+![lasers2.png](readme_images%2Flasers2.png)
+
 ### Implementation
-  The sensors are implemented in `techtrix_grabber_model_plugin` (loaded on the TechTrix robot URDF model) -
-  a plugin that issues stop commands to the lifting joint controller when necessary.
-  The plugin subscribes to the laser sensors and the state of the lifting joint controller.
-  If there is an object that is sufficiently close to the grabber
-  and the lifting joint controller is set to lower the grabber even more,
-  then a stop command is issued.
 
-  Without the plugin and the sensors, the grabber collides with the cylinders:
+The sensors are implemented in `techtrix_grabber_model_plugin` (loaded on the TechTrix robot URDF model) -
+a plugin that issues stop commands to the lifting joint controller when necessary.
+The plugin subscribes to the laser sensors and the state of the lifting joint controller.
+If there is an object that is sufficiently close to the grabber
+and the lifting joint controller is set to lower the grabber even more,
+then a stop command is issued.
 
-  ![without.png](readme_images%2Fwithout.png)
+Without the plugin and the sensors, the grabber collides with the cylinders:
 
-  With the plugin and the input from the sensors, the grabber stops automatically before colliding:
-  
-  ![with.png](readme_images%2Fwith.png)
+![without.png](readme_images%2Fwithout.png)
+
+With the plugin and the input from the sensors, the grabber stops automatically before colliding:
+
+![with.png](readme_images%2Fwith.png)
