@@ -124,9 +124,24 @@ To run the thermal sensor in the simulation:
 The suction cups of the grabber use contact sensors to detech objects that need to be picked up.
 
 ### Visualization
+  To visualize the sensors in RViz, we have created the `techtrix_grabber_contact_plugin` which publishes markers.
+  The red sphere markers indicate the the specific sensor is currently making a contact.
+
   ![no_contacts.png](readme_images%2Fno_contacts.png)
   ![contacts.png](readme_images%2Fcontacts.png)
 ### Implementation
+  The sensors are implemented in `techtrix_grabber_world_plugin` - a plugin that manages the suction cups - allowing them to pick up and let go of objects that make contact with the suction cups/contact sensors automatically.
+
+  The plugin allows the grabbing to be turned on:
+  ```
+  rosservice call /grabber_world_plugin_node/grabber "is_on: true" 
+  ```
+  and off:
+  ```
+  rosservice call /grabber_world_plugin_node/grabber "is_on: false" 
+  ```
+
+  The idea behind the plugin is that it reads the topics provided by the sensors and if there is a collision/contact and the grabbing is on, then it dynamically creates a link between the grabber and the object. See the demo.
 
 ## Laser sensors
 
