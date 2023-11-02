@@ -18,12 +18,16 @@ From: ros:noetic
         python3-catkin-tools \
         ros-noetic-xacro \
         ros-noetic-rviz \
-        ros-noetic-joint-state-publisher-gui
+        ros-noetic-joint-state-publisher-gui \
+        ros-noetic-ros-control \
+        ros-noetic-ros-controllers
     sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
     wget https://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
     apt-get install -y \
         ros-noetic-gazebo-plugins \
-        ros-noetic-gazebo-ros
+        ros-noetic-gazebo-ros \
+        ros-noetic-gazebo-ros-control \
+        ros-noetic-joint-state-controller
     . /opt/ros/noetic/setup.sh
     cd /catkin_ws
     rosdep update
