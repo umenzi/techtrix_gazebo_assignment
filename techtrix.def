@@ -2,10 +2,12 @@ Bootstrap: docker
 From: ros:noetic
 
 %files
-    gazebo_thermal_sensor_plugin    /catkin_ws/src/gazebo_thermal_sensor_plugin
-    techtrix_control                /catkin_ws/src/techtrix_control
-    techtrix_description            /catkin_ws/src/techtrix_description
-    techtrix_gazebo                 /catkin_ws/src/techtrix_gazebo
+    gazebo_thermal_sensor_plugin        /catkin_ws/src/gazebo_thermal_sensor_plugin
+    techtrix_control                    /catkin_ws/src/techtrix_control
+    techtrix_description                /catkin_ws/src/techtrix_description
+    techtrix_gazebo                     /catkin_ws/src/techtrix_gazebo
+    techtrix_grabber_contact_plugin     /catkin_ws/src/techtrix_grabber_contact_plugin
+    techtrix_grabber_world_plugin       /catkin_ws/src/techtrix_grabber_world_plugin
     startup.sh
 
 %post
