@@ -57,7 +57,7 @@ singularity run team_4.img
 
 # General Structure
 
-The repository consists of three different ROS packages:
+The repository consists of the following ROS packages:
 
 - `techtrix_gazebo` contains the different models and worlds of our simulation.
   - The environment is loaded in `techtrix.world`, in the `worlds` folder.
@@ -66,14 +66,18 @@ The repository consists of three different ROS packages:
 - `techtrix_description` contains the model and basic functionality of the TechTrix robot.
   For example, the robot model can be found in the `techtrix_robot` folder.
 - `techtrix_control` contains the ROS code which controls what happens in the simulation.
-
+- `techtrix_grabber_contact_plugin` contains a plugin that visualizes the contact sensors in rviz. Creates and publishes rviz markers when there is a collision.
+- `techtrix_grabber_model_plugin` contains a plugin that implements the laser sensors. Based on the distance they provide, the plugin halts the grabber's movement if the cylinders are getting too close and might collide with the grabber.
+- `techtrix_grabber_world_plugin` contains a plugin that implements the contact sensors. Allows the grabber to pick up and let go of anything that makes contact/collides with the suction cups.
+- `gazebo_thermal_sensor_plugin`
 # Sensors
 
 The robot makes use of multiple sensors:
 
 - **Thermal sensor**: The robot uses a thermal sensor to detect if humans are too close to the conveyor belt.
   If a human is detected, the robot will shut down for safety reasons.
-- TODO
+- **Contact sensors**: Each suction cup of the robot's grabber is equiped with a contact sensor. Based on these sensors the suction cups are being activated once the operator issues a command.
+- **Laser sensors**: The grabber of the robot is equiped with laser sensors to prevent the grabber of hitting the cylinders while going down.
 
 ## Thermal sensor
 
@@ -115,3 +119,21 @@ To run the thermal sensor in the simulation:
    roslaunch techtrix_control techtrix_thermal.launch
    ```
    Whenever a human is found close to the conveyor belt, the Gazebo world will be reset, moving the human far away again.
+
+## Contact sensors
+The suction cups of the grabber use contact sensors to detech objects that need to be picked up.
+
+### Visualization
+  ![no_contacts.png](readme_images%2Fno_contacts.png)
+  ![contacts.png](readme_images%2Fcontacts.png)
+### Implementation
+
+## Laser sensors
+
+### Visualization
+  ![lasers1.png](readme_images%2Flasers1.png)
+  ![lasers2.png](readme_images%2Flasers2.png)
+### Implementation
+  ![without.png](readme_images%2Fwithout.png)
+
+  ![with.png](readme_images%2Fwith.png)
