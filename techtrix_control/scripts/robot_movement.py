@@ -79,51 +79,6 @@ class CommandExecutor:
         self.base_robot(0)
         time.sleep(2)
 
-    def move(self, target_y):
-        """
-        We move the robot by target_y. E.g.:
-            - If robot is in y=4 and target_y=2, then the resulting y is 6
-            - If robot is in y=1 and target_y=-2, then the resulting y is -1
-        """
-        rospy.wait_for_service('/gazebo/set_model_state')
-        try:
-            current_y = self.get_robot_position().pose.position.y
-            init_y = current_y
-
-            # We move slowly to the desired location
-            if target_y > 0:
-                while current_y < target_y + init_y:
-                    self.base_robot(1000)
-                    
-                    current_y = self.get_robot_position().pose.position.y
-                    
-                    # current_y += 0.01
-                    # model_state.pose.position.y = current_y
-
-                    # set_model_state(model_state)
-                    # time.sleep(0.01)  # Add a small delay to make it seem fluid
-            else:
-                while current_y > init_y - target_y:
-                    self.base_robot(-10)
-                    
-                    current_y = self.get_robot_position().pose.position.y
-                    
-                    # current_y -= 0.01
-                    # model_state.pose.position.y = current_y
-
-                    # set_model_state(model_state)
-                    # time.sleep(0.01)  # Add a small delay to make it seem fluid
-
-            # Finally, we reach the final destination
-            # model_state.pose.position.y = current_y
-            # set_model_state(model_state)
-
-            return True
-
-        except rospy.ServiceException as e:
-            print(f"Service call failed: {e}")
-            return False
-
     def get_robot_position(self):
         rospy.wait_for_service('/gazebo/get_model_state')
         try:
@@ -139,36 +94,33 @@ if __name__ == '__main__' and not rospy.is_shutdown():
     executor = CommandExecutor()
 
     try:
-        while True:
-            # We start spawning and moving the cylinders
-            cylinders = executor.create_cylinders(0.5, 6)
+        # We start spawning and moving the cylinders
+        cylinders = executor.create_cylinders(0.5, 6)
 
-            # The robot then grabs the cylinders
-            executor.grab_cylinders()
+        # The robot then grabs the cylinders
+        executor.grab_cylinders()
+        
+        time.sleep(1)
+        
+        # Move forwards
+        
+        executor.base_robot(2)
+        
+        time.sleep(4)
 
-            # The robot then goes to the desired location with the cylinders
-            # executor.move(1)
-            
-            time.sleep(1)
-            
-            executor.base_robot(2)
-            
-            time.sleep(4)
+        # The robot drops the cylinders
+        executor.drop_cylinders()
+        
+        time.sleep(3)
+        
+        # Move backwards
+        
+        executor.base_robot(-2)
 
-            # The robot drops the cylinders
-            executor.drop_cylinders()
-            
-            time.sleep(3)
-            
-            executor.base_robot(-2)
-
-            # We go back to the initial position
-            # executor.move(-1)
-
-            # Finally, we remove the cylinders
-            delete_cylinders(cylinders, 0.5)
-            
-            time.sleep(1)
+        # Finally, we remove the cylinders
+        delete_cylinders(cylinders, 0.2)
+        
+        time.sleep(1)
 
         # Prevent this code from exiting until Ctrl+C is pressed.
         rospy.spin()
