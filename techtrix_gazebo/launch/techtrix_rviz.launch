@@ -2,12 +2,11 @@
 <launch>
     <param name="robot_description" command="$(find xacro)/xacro $(find techtrix_description)/urdf/techtrix.xacro" />
 
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    <node name="robot_state_publisher_rviz" pkg="robot_state_publisher" type="robot_state_publisher" />
 
-    <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
+    <node name="joint_state_publisher_gui_rviz" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
 
     <!-- Rviz-->
-    <!-- <node name="rviz" pkg="rviz" type="rviz" required="true"/> -->
     <node name="rviz" pkg="rviz" type="rviz" required="true" 
         args="-d $(find techtrix_description)/rviz/techtrix.rviz"/>
 </launch>

@@ -53,6 +53,10 @@
         <name>Techtrix truck</name>
     </include>
 
+    <!-- Cylinders are loaded in cylinders.py -->
+
+    <plugin name="grabber_world_plugin" filename="libtechtrix_grabber_world_plugin.so"/>
+    
     <!-- We load the human worker -->
     <include>
     		<uri>model://techtrix_worker</uri>

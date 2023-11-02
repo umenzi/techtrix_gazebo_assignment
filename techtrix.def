@@ -1,0 +1,39 @@
+Bootstrap: docker
+From: ros:noetic
+
+%files
+    gazebo_thermal_sensor_plugin        /catkin_ws/src/gazebo_thermal_sensor_plugin
+    techtrix_control                    /catkin_ws/src/techtrix_control
+    techtrix_description                /catkin_ws/src/techtrix_description
+    techtrix_gazebo                     /catkin_ws/src/techtrix_gazebo
+    techtrix_grabber_contact_plugin     /catkin_ws/src/techtrix_grabber_contact_plugin
+    techtrix_grabber_model_plugin       /catkin_ws/src/techtrix_grabber_model_plugin
+    techtrix_grabber_world_plugin       /catkin_ws/src/techtrix_grabber_world_plugin
+    startup.sh
+
+%post
+    apt-get update && apt-get install -y wget \
+        python3 \
+        python-is-python3 \
+        python3-catkin-tools \
+        ros-noetic-xacro \
+        ros-noetic-rviz \
+        ros-noetic-joint-state-publisher-gui \
+        ros-noetic-ros-control \
+        ros-noetic-ros-controllers
+    sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
+    wget https://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
+    apt-get install -y \
+        ros-noetic-gazebo-plugins \
+        ros-noetic-gazebo-ros \
+        ros-noetic-gazebo-ros-control \
+        ros-noetic-joint-state-controller
+    . /opt/ros/noetic/setup.sh
+    cd /catkin_ws
+    rosdep update
+    rosdep install --from-paths src --ignore-src -r -y
+    catkin build
+    chmod +x /startup.sh
+
+%runscript
+    exec /startup.sh

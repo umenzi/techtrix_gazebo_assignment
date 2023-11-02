@@ -1,6 +1,336 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="techtrix_robot">
 
+  <!-- contact sensors for suction cups -->
+  <gazebo reference="grabbing_mechanism">
+    <sensor name='grabber_contact_sensor_sc_1_top' type='contact'>
+      <always_on>true</always_on> 
+      <update_rate>300</update_rate> 
+      <contact>
+        <collision>grabbing_mechanism_sc_1_top_collision</collision>
+      </contact>
+      <plugin name="contact_plugin_sc_1_top" filename="libGrabberContactPlugin.so">
+        <collision_x>0.551</collision_x>
+        <collision_y>-0.098</collision_y>
+        <collision_z>-0.135</collision_z>
+        <marker_publish>sc_1_top</marker_publish>
+        <marker_id>1</marker_id>
+      </plugin>
+    </sensor>
+    <sensor name='grabber_contact_sensor_sc_1_bot' type='contact'>
+      <always_on>true</always_on> 
+      <update_rate>300</update_rate> 
+      <contact>
+        <collision>grabbing_mechanism_sc_1_bot_collision_1</collision>
+      </contact>
+      <plugin name="contact_plugin_sc_1_bot" filename="libGrabberContactPlugin.so">
+        <collision_x>0.551</collision_x>
+        <collision_y>-0.098</collision_y>
+        <collision_z>-0.255</collision_z>
+        <marker_publish>sc_1_bot</marker_publish>
+        <marker_id>2</marker_id>
+      </plugin>
+    </sensor>
+    <sensor name='grabber_contact_sensor_sc_2_top' type='contact'>
+      <always_on>true</always_on> 
+      <update_rate>300</update_rate> 
+      <contact>
+        <collision>grabbing_mechanism_sc_2_top_collision_2</collision>
+      </contact>
+      <plugin name="contact_plugin_sc_2_top" filename="libGrabberContactPlugin.so">
+        <collision_x>0.339</collision_x>
+        <collision_y>-0.098</collision_y>
+        <collision_z>-0.135</collision_z>
+        <marker_publish>sc_2_top</marker_publish>
+        <marker_id>3</marker_id>
+      </plugin>
+    </sensor>
+    <sensor name='grabber_contact_sensor_sc_2_bot' type='contact'>
+      <always_on>true</always_on> 
+      <update_rate>300</update_rate> 
+      <contact>
+        <collision>grabbing_mechanism_sc_2_bot_collision_3</collision>
+      </contact>
+      <plugin name="contact_plugin_sc_2_bot" filename="libGrabberContactPlugin.so">
+        <collision_x>0.339</collision_x>
+        <collision_y>-0.098</collision_y>
+        <collision_z>-0.255</collision_z>
+        <marker_publish>sc_2_bot</marker_publish>
+        <marker_id>4</marker_id>
+      </plugin>
+    </sensor>
+    <sensor name='grabber_contact_sensor_sc_3_top' type='contact'>
+      <always_on>true</always_on> 
+      <update_rate>300</update_rate> 
+      <contact>
+        <collision>grabbing_mechanism_sc_3_top_collision_4</collision>
+      </contact>
+      <plugin name="contact_plugin_sc_3_top" filename="libGrabberContactPlugin.so">
+        <collision_x>0.127</collision_x>
+        <collision_y>-0.098</collision_y>
+        <collision_z>-0.135</collision_z>   
+        <marker_publish>sc_3_top</marker_publish>
+        <marker_id>5</marker_id>
+      </plugin>
+    </sensor>
+    <sensor name='grabber_contact_sensor_sc_3_bot' type='contact'>
+      <always_on>true</always_on> 
+      <update_rate>300</update_rate> 
+      <contact>
+        <collision>grabbing_mechanism_sc_3_bot_collision_5</collision>
+      </contact>
+      <plugin name="contact_plugin_sc_3_bot" filename="libGrabberContactPlugin.so">
+        <collision_x>0.127</collision_x>
+        <collision_y>-0.098</collision_y>
+        <collision_z>-0.255</collision_z>
+        <marker_publish>sc_3_bot</marker_publish>
+        <marker_id>6</marker_id>
+      </plugin>
+    </sensor>
+    <sensor name='grabber_contact_sensor_sc_4_top' type='contact'>
+      <always_on>true</always_on> 
+      <update_rate>300</update_rate> 
+      <contact>
+        <collision>grabbing_mechanism_sc_4_top_collision_6</collision>
+      </contact>
+      <plugin name="contact_plugin_sc_4_top" filename="libGrabberContactPlugin.so">
+        <collision_x>-0.127</collision_x>
+        <collision_y>-0.098</collision_y>
+        <collision_z>-0.135</collision_z>
+        <marker_publish>sc_4_top</marker_publish>
+        <marker_id>7</marker_id>
+      </plugin>
+    </sensor>
+    <sensor name='grabber_contact_sensor_sc_4_bot' type='contact'>
+      <always_on>true</always_on> 
+      <update_rate>300</update_rate> 
+      <contact>
+        <collision>grabbing_mechanism_sc_4_bot_collision_7</collision>
+      </contact>
+      <plugin name="contact_plugin_sc_4_bot" filename="libGrabberContactPlugin.so">
+        <collision_x>-0.127</collision_x>
+        <collision_y>-0.098</collision_y>
+        <collision_z>-0.255</collision_z>
+        <marker_publish>sc_4_bot</marker_publish>
+        <marker_id>8</marker_id>
+      </plugin>
+    </sensor>
+    <sensor name='grabber_contact_sensor_sc_5_top' type='contact'>
+      <always_on>true</always_on> 
+      <update_rate>300</update_rate> 
+      <contact>
+        <collision>grabbing_mechanism_sc_5_top_collision_8</collision>
+      </contact>
+      <plugin name="contact_plugin_sc_5_top" filename="libGrabberContactPlugin.so">
+        <collision_x>-0.339</collision_x>
+        <collision_y>-0.098</collision_y>
+        <collision_z>-0.135</collision_z>
+        <marker_publish>sc_5_top</marker_publish>
+        <marker_id>9</marker_id>
+      </plugin>
+    </sensor>
+    <sensor name='grabber_contact_sensor_sc_5_bot' type='contact'>
+      <always_on>true</always_on> 
+      <update_rate>300</update_rate> 
+      <contact>
+        <collision>grabbing_mechanism_sc_5_bot_collision_9</collision>
+      </contact>
+      <plugin name="contact_plugin_sc_5_bot" filename="libGrabberContactPlugin.so">
+        <collision_x>-0.339</collision_x>
+        <collision_y>-0.098</collision_y>
+        <collision_z>-0.255</collision_z>
+        <marker_publish>sc_5_bot</marker_publish>
+        <marker_id>10</marker_id>
+      </plugin>
+    </sensor>
+    <sensor name='grabber_contact_sensor_sc_6_top' type='contact'>
+      <always_on>true</always_on> 
+      <update_rate>300</update_rate> 
+      <contact>
+        <collision>grabbing_mechanism_sc_6_top_collision_10</collision>
+      </contact>
+      <plugin name="contact_plugin_sc_6_top" filename="libGrabberContactPlugin.so">
+        <collision_x>-0.551</collision_x>
+        <collision_y>-0.098</collision_y>
+        <collision_z>-0.135</collision_z>
+        <marker_publish>sc_6_top</marker_publish>
+        <marker_id>11</marker_id>
+      </plugin>
+    </sensor>
+    <sensor name='grabber_contact_sensor_sc_6_bot' type='contact'>
+      <always_on>true</always_on> 
+      <update_rate>300</update_rate> 
+      <contact>
+        <collision>grabbing_mechanism_sc_6_bot_collision_11</collision>
+      </contact>
+      <plugin name="contact_plugin_sc_6_bot" filename="libGrabberContactPlugin.so">
+        <collision_x>-0.551</collision_x>
+        <collision_y>-0.098</collision_y>
+        <collision_z>-0.255</collision_z>
+        <marker_publish>sc_6_bot</marker_publish>
+        <marker_id>12</marker_id>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- lasers for the grabber -->
+  <gazebo reference="grabbing_mechanism_sc_1_laser">
+    <sensor type="ray" name="sc_1_laser">
+      <visualize>true</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>10</samples>
+            <resolution>1</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>0</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.05</min>
+          <max>30.0</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+      <plugin name="sc_1_laser_controller" filename="libgazebo_ros_laser.so">
+        <robotNamespace>techtrix</robotNamespace>
+        <topicName>/techtrix/laser/sc_1</topicName>
+        <frameName>grabbing_mechanism_sc_1_laser</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+  <gazebo reference="grabbing_mechanism_sc_2_laser">
+    <sensor type="ray" name="sc_2_laser">
+      <visualize>true</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>10</samples>
+            <resolution>1</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>0</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.05</min>
+          <max>30.0</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+      <plugin name="sc_2_laser_controller" filename="libgazebo_ros_laser.so">
+        <robotNamespace>techtrix</robotNamespace>
+        <topicName>/techtrix/laser/sc_2</topicName>
+        <frameName>grabbing_mechanism_sc_2_laser</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+  <gazebo reference="grabbing_mechanism_sc_3_laser">
+    <sensor type="ray" name="sc_3_laser">
+      <visualize>true</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>10</samples>
+            <resolution>1</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>0</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.05</min>
+          <max>30.0</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+      <plugin name="sc_3_laser_controller" filename="libgazebo_ros_laser.so">
+        <robotNamespace>techtrix</robotNamespace>
+        <topicName>/techtrix/laser/sc_3</topicName>
+        <frameName>grabbing_mechanism_sc_3_laser</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+  <gazebo reference="grabbing_mechanism_sc_4_laser">
+    <sensor type="ray" name="sc_4_laser">
+      <visualize>true</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>10</samples>
+            <resolution>1</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>0</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.05</min>
+          <max>30.0</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+      <plugin name="sc_4_laser_controller" filename="libgazebo_ros_laser.so">
+        <robotNamespace>techtrix</robotNamespace>
+        <topicName>/techtrix/laser/sc_4</topicName>
+        <frameName>grabbing_mechanism_sc_4_laser</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+  <gazebo reference="grabbing_mechanism_sc_5_laser">
+    <sensor type="ray" name="sc_5_laser">
+      <visualize>true</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>10</samples>
+            <resolution>1</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>0</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.05</min>
+          <max>30.0</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+      <plugin name="sc_5_laser_controller" filename="libgazebo_ros_laser.so">
+        <robotNamespace>techtrix</robotNamespace>
+        <topicName>/techtrix/laser/sc_5</topicName>
+        <frameName>grabbing_mechanism_sc_5_laser</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+  <gazebo reference="grabbing_mechanism_sc_6_laser">
+    <sensor type="ray" name="sc_6_laser">
+      <visualize>true</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>10</samples>
+            <resolution>1</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>0</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.05</min>
+          <max>30.0</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+      <plugin name="sc_6_laser_controller" filename="libgazebo_ros_laser.so">
+        <robotNamespace>techtrix</robotNamespace>
+        <topicName>/techtrix/laser/sc_6</topicName>
+        <frameName>grabbing_mechanism_sc_6_laser</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
   <!-- camera -->
   <gazebo reference="camera_link"> <!--The link name must match the link name of the URDF model -->
     <sensor type="camera" name="camera1"> <!-- The name "camera1" must be unique from all other sensors -->
