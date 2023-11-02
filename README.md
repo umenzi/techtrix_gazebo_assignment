@@ -141,14 +141,22 @@ The suction cups of the grabber use contact sensors to detech objects that need 
   rosservice call /grabber_world_plugin_node/grabber "is_on: false" 
   ```
 
-  The idea behind the plugin is that it reads the topics provided by the sensors and if there is a collision/contact and the grabbing is on, then it dynamically creates a link between the grabber and the object. See the demo.
+  The idea behind the plugin is that it reads the topics provided by the sensors and if there is a collision/contact (you should see the red markers in RViz) and the grabbing is on (based on the service it advertises), then it dynamically creates a link between the grabber and the object. See the demo.
 
 ## Laser sensors
-
+The laser sensors function as safety mechanism prevent the grabber/lifting mechanism of hitting the cylinders while going down.
 ### Visualization
+  For visualization in RViz we are using an already existing plugin, that creates red dots where the laser meets an object.
+
   ![lasers1.png](readme_images%2Flasers1.png)
   ![lasers2.png](readme_images%2Flasers2.png)
 ### Implementation
+  The sensors are implemented in `techtrix_grabber_model_plugin` (loaded on the TechTrix robot URDF model) - a plugin that issues stop commands to the lifting joint controller when neccassery. The plugin subscribes to the laser sensors and the state of the lifting joint controller. If there is an object that is sufficiantly close to the grabber and the lifting joint controller is set to lower the grabber even more, then a stop command is issued.
+
+  Without the plugin and the sensors, the grabber collides with the cylinders:
+
   ![without.png](readme_images%2Fwithout.png)
 
+  With the plugin and the input from the sensors, the grabber stops automatically before colliding:
+  
   ![with.png](readme_images%2Fwith.png)
