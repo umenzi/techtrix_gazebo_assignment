@@ -69,7 +69,7 @@ namespace gazebo
                 return;
             }
             this->grabber_service = this->nh.advertiseService("grabber", &GrabberWorldPlugin::toggle_callback, this);
-            
+
             this->node = gazebo::transport::NodePtr(new gazebo::transport::Node());
             this->node->Init();
 
@@ -113,16 +113,18 @@ namespace gazebo
                 {
                    this->attach(model1, link1, model2, link2);
                 }
-
             }
         }
 
         private: bool toggle_callback(techtrix_grabber_world_plugin::Toggle::Request &req, techtrix_grabber_world_plugin::Toggle::Response &res) 
         {
             this->is_on = req.is_on;
-            if (req.is_on) {
+            if (req.is_on) 
+            {
                 ROS_INFO("Turning on grabbing mechanism");
-            } else {
+            } 
+            else 
+            {
                 ROS_INFO("Turning off grabbing mechanism");
                 detach_all();
             }
@@ -133,7 +135,7 @@ namespace gazebo
 
         private: bool joint_exists(std::string model1, std::string link1, std::string model2, std::string link2, FixedJoint &joint) 
         {
-            for(auto it = this->joints.begin(); it != this->joints.end(); it++) 
+            for (auto it = this->joints.begin(); it != this->joints.end(); it++) 
             {
                 auto isMatch = (it->model1.compare(model1) == 0) && (it->model2.compare(model2) == 0)
                         && (it->link1.compare(link1) == 0) && (it->link2.compare(link2) == 0);
@@ -175,7 +177,7 @@ namespace gazebo
 
             physics::ModelPtr model1_ptr(dynamic_cast<physics::Model*>(base1_ptr.get()));
             physics::ModelPtr model2_ptr(dynamic_cast<physics::Model*>(base2_ptr.get()));
-
+        
             // get links
             auto link1_ptr = model1_ptr->GetLink(link1);
             if (link1_ptr == NULL)

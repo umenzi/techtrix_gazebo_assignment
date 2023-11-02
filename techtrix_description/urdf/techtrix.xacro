@@ -306,6 +306,10 @@
   </transmission>
 
   <gazebo>
+    <plugin name="techtrix_grabber_model_plugin" filename="libtechtrix_grabber_model_plugin.so" />
+  </gazebo>
+
+  <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotNamespace>/techtrix</robotNamespace>
       <robotParam>/techtrix_description</robotParam>
