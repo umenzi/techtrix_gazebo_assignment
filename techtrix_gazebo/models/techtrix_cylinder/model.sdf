@@ -7,7 +7,7 @@
 	<link name='cylinder_main'>
 		<inertial>
 			<pose>0 0 0 0 0 0</pose>
-			<mass>25</mass>
+			<mass>10</mass>
 			<inertia>
 				<ixx>1</ixx>
 				<ixy>0</ixy>

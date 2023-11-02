@@ -56,9 +56,9 @@ class CommandExecutor:
         # rospy.sleep(3)
         time.sleep(3)
         self.grabber(True)
-        rospy.sleep(1)
+        time.sleep(1)
         self.base_robot(0.5)
-        rospy.sleep(1)
+        time.sleep(1)
         self.lift_robot(5)
         # rospy.sleep(1)
         time.sleep(3)
@@ -67,12 +67,17 @@ class CommandExecutor:
         """
         The robot will grab the cylinders
         """
+        # self.base_robot(0.001)
+        # Move the grabbing mechanism down
+        self.lift_robot(-0.5)
+        rospy.sleep(1)
         # Drop the cylinders
         self.grabber(False)
         rospy.sleep(1)
         # Move the grabbing mechanism to the initial position
         self.lift_robot(2)
-        rospy.sleep(1)
+        self.base_robot(0)
+        time.sleep(2)
 
     def move(self, target_y):
         """
@@ -135,22 +140,32 @@ if __name__ == '__main__' and not rospy.is_shutdown():
 
     try:
         # We start spawning and moving the cylinders
-        cylinders = executor.create_cylinders(0.5, 6)
+        # cylinders = executor.create_cylinders(0.5, 6)
 
         # The robot then grabs the cylinders
         executor.grab_cylinders()
 
         # The robot then goes to the desired location with the cylinders
-        executor.move(3)
+        # executor.move(1)
+        
+        time.sleep(1)
+        
+        executor.base_robot(2)
+        
+        time.sleep(4)
 
         # The robot drops the cylinders
         executor.drop_cylinders()
+        
+        time.sleep(3)
+        
+        executor.base_robot(-2)
 
         # We go back to the initial position
-        executor.move(-3)
+        # executor.move(-1)
 
         # Finally, we remove the cylinders
-        delete_cylinders(cylinders, 0.5)
+        # delete_cylinders(cylinders, 0.5)
 
         # Prevent this code from exiting until Ctrl+C is pressed.
         rospy.spin()
