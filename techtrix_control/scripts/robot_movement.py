@@ -139,33 +139,36 @@ if __name__ == '__main__' and not rospy.is_shutdown():
     executor = CommandExecutor()
 
     try:
-        # We start spawning and moving the cylinders
-        # cylinders = executor.create_cylinders(0.5, 6)
+        while True:
+            # We start spawning and moving the cylinders
+            cylinders = executor.create_cylinders(0.5, 6)
 
-        # The robot then grabs the cylinders
-        executor.grab_cylinders()
+            # The robot then grabs the cylinders
+            executor.grab_cylinders()
 
-        # The robot then goes to the desired location with the cylinders
-        # executor.move(1)
-        
-        time.sleep(1)
-        
-        executor.base_robot(2)
-        
-        time.sleep(4)
+            # The robot then goes to the desired location with the cylinders
+            # executor.move(1)
+            
+            time.sleep(1)
+            
+            executor.base_robot(2)
+            
+            time.sleep(4)
 
-        # The robot drops the cylinders
-        executor.drop_cylinders()
-        
-        time.sleep(3)
-        
-        executor.base_robot(-2)
+            # The robot drops the cylinders
+            executor.drop_cylinders()
+            
+            time.sleep(3)
+            
+            executor.base_robot(-2)
 
-        # We go back to the initial position
-        # executor.move(-1)
+            # We go back to the initial position
+            # executor.move(-1)
 
-        # Finally, we remove the cylinders
-        # delete_cylinders(cylinders, 0.5)
+            # Finally, we remove the cylinders
+            delete_cylinders(cylinders, 0.5)
+            
+            time.sleep(1)
 
         # Prevent this code from exiting until Ctrl+C is pressed.
         rospy.spin()
