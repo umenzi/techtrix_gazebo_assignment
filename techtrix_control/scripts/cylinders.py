@@ -40,7 +40,7 @@ def spawn_cylinder(time_in_between=0, amount_of_cylinders=6):
     
     return cylinders
 
-def move_cylinder(cylinders, time_in_between=1):
+def move_cylinder(cylinders):
     rospy.wait_for_service('/gazebo/set_model_state')
     set_model_state = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
     
@@ -74,7 +74,7 @@ if __name__ == '__main__':
         
         cylinders = spawn_cylinder(0.5, 6)
         
-        move_cylinder(cylinders, 2)
+        move_cylinder(cylinders)
         
         time.sleep(2)
         

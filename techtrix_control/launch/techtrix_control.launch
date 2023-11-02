@@ -17,5 +17,6 @@
   <!-- Scripts -->
 
   <!-- Spawns cylinders in the environment -->
-  <node name="spawn_and_move_cylinders" pkg="techtrix_control" type="cylinders.py" />
+<!--  <node name="spawn_and_move_cylinders" pkg="techtrix_control" type="cylinders.py" />-->
+  <node name="techtrix_robot_controller" pkg="techtrix_control" type="robot_movement.py" />
 </launch>
