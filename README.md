@@ -46,6 +46,15 @@ Note that this is a ROS workspace, hence:
 2. To build the workspace again, run `catkin clean -y && catkin build`.
    - If you get an RLException when running the `roslaunch` commands, your workspace is not correctly set up.
 
+## Singularity image
+
+Run the following commands to build and run the singularity image of the project:
+
+```bash
+sudo singularity build team_4.img techtrix.def
+singularity run team_4.img
+```
+
 # General Structure
 
 The repository consists of three different ROS packages:
@@ -63,12 +72,12 @@ The repository consists of three different ROS packages:
 The robot makes use of multiple sensors:
 
 - **Thermal sensor**: The robot uses a thermal sensor to detect if humans are too close to the conveyor belt.
-    If a human is detected, the robot will shut down for safety reasons.
+  If a human is detected, the robot will shut down for safety reasons.
 - TODO
 
 ## Thermal sensor
 
-The TechTrix robot uses a **thermal sensor** to detect when humans are too close to the conveyor belt and automatically 
+The TechTrix robot uses a **thermal sensor** to detect when humans are too close to the conveyor belt and automatically
 stops operations.
 
 The thermal sensor is located in the `camera_link` object of the TechTrix robot URDF model.
@@ -82,8 +91,8 @@ To run the thermal sensor in the simulation:
 
 - You should now see a window showing the thermal sensor's output.
 - If you don't see the thermal sensor output, add a `Camera` display to RViz.
-    Under `Image Topic`, set the `Camera` display to `/techtrix/thermal1/image_raw`.
-- The thermal sensor output image is similar to the normal camera image (also shown in the RViz simulation), 
+  Under `Image Topic`, set the `Camera` display to `/techtrix/thermal1/image_raw`.
+- The thermal sensor output image is similar to the normal camera image (also shown in the RViz simulation),
   but everything is much darker.
 - The objects of interest are shown much brighter.
   They are modeled using COLLADA and their emissive and ambient material properties are set to maximum red:
@@ -95,6 +104,7 @@ To run the thermal sensor in the simulation:
       <color sid="ambient">1 0 0 1</color>
     </ambient>
   ```
+
 3. Initially, no objects are shown as bright, even when spanning cylinders.
    However, there is a human in the scene, although initially they are far away from the conveyor belt:
    ![human_far_away.png](readme_images%2Fhuman_far_away.png)
