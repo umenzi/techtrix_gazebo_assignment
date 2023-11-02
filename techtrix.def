@@ -7,6 +7,7 @@ From: ros:noetic
     techtrix_description                /catkin_ws/src/techtrix_description
     techtrix_gazebo                     /catkin_ws/src/techtrix_gazebo
     techtrix_grabber_contact_plugin     /catkin_ws/src/techtrix_grabber_contact_plugin
+    techtrix_grabber_model_plugin       /catkin_ws/src/techtrix_grabber_model_plugin
     techtrix_grabber_world_plugin       /catkin_ws/src/techtrix_grabber_world_plugin
     startup.sh
 
