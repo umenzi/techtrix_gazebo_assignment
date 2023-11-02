@@ -1,6 +1,6 @@
-Add# Gazebo Assignment
+# Gazebo Assignment
 
-This repository contains the code to run the simulation of the TechTrix robot, {name}, for the Gazebo Assignment.
+This repository contains the code to run the simulation of the TechTrix robot for the Gazebo Assignment.
 
 ## Prerequisites
 
@@ -66,18 +66,31 @@ The repository consists of the following ROS packages:
 - `techtrix_description` contains the model and basic functionality of the TechTrix robot.
   For example, the robot model can be found in the `techtrix_robot` folder.
 - `techtrix_control` contains the ROS code which controls what happens in the simulation.
-- `techtrix_grabber_contact_plugin` contains a plugin that visualizes the contact sensors in rviz. Creates and publishes rviz markers when there is a collision.
+- `techtrix_grabber_contact_plugin` contains a plugin that visualizes the contact sensors in RViz. Creates and publishes RViz markers when there is a collision.
 - `techtrix_grabber_model_plugin` contains a plugin that implements the laser sensors. Based on the distance they provide, the plugin halts the grabber's movement if the cylinders are getting too close and might collide with the grabber.
 - `techtrix_grabber_world_plugin` contains a plugin that implements the contact sensors. Allows the grabber to pick up and let go of anything that makes contact/collides with the suction cups.
-- `gazebo_thermal_sensor_plugin`
+- `gazebo_thermal_sensor_plugin` contains a plugin that implements the thermal sensor.
+
+# The simulation
+
+This simulation shows how the TechTrix will work.
+
+1. First, several LPG cylinders arrive through the conveyor belt.
+2. The TechTrix robot grabs and rotates the cylinders.
+3. The robot moves to the desired location, where the cylinders are dropped.
+
+The purpose of the robot is to reduce the manual handling risk during loading and unloading operations of LPG cylinders.
+
 # Sensors
 
 The robot makes use of multiple sensors:
 
 - **Thermal sensor**: The robot uses a thermal sensor to detect if humans are too close to the conveyor belt.
   If a human is detected, the robot will shut down for safety reasons.
-- **Contact sensors**: Each suction cup of the robot's grabber is equiped with a contact sensor. Based on these sensors the suction cups are being activated once the operator issues a command.
-- **Laser sensors**: The grabber of the robot is equiped with laser sensors to prevent the grabber of hitting the cylinders while going down.
+- **Contact sensors**: Each suction cup of the robot's grabber is equipped with a contact sensor. 
+ Based on these sensors the suction cups are being activated once the operator issues a command.
+- **Laser sensors**: The grabber of the robot is equipped with laser sensors to prevent the grabber 
+ of hitting the cylinders while going down.
 
 ## Thermal sensor
 
@@ -93,21 +106,21 @@ To run the thermal sensor in the simulation:
 1. Launch the Gazebo simulation: `roslaunch techtrix_gazebo techtrix.launch`.
 2. Launch RViz: `roslaunch techtrix_gazebo techtrix_rviz.launch`.
 
-- You should now see a window showing the thermal sensor's output.
-- If you don't see the thermal sensor output, add a `Camera` display to RViz.
-  Under `Image Topic`, set the `Camera` display to `/techtrix/thermal1/image_raw`.
-- The thermal sensor output image is similar to the normal camera image (also shown in the RViz simulation),
-  but everything is much darker.
-- The objects of interest are shown much brighter.
-  They are modeled using COLLADA and their emissive and ambient material properties are set to maximum red:
-  ```xml
-    <emission>
-      <color sid="emission">1 0 0 1</color>
-    </emission>
-    <ambient>
-      <color sid="ambient">1 0 0 1</color>
-    </ambient>
-  ```
+   - You should now see a window showing the thermal sensor's output.
+   - If you don't see the thermal sensor output, add a `Camera` display to RViz.
+     Under `Image Topic`, set the `Camera` display to `/techtrix/thermal1/image_raw`.
+   - The thermal sensor output image is similar to the normal camera image (also shown in the RViz simulation),
+     but everything is much darker.
+   - The objects of interest are shown much brighter.
+     They are modeled using COLLADA and their emissive and ambient material properties are set to maximum red:
+     ```xml
+       <emission>
+         <color sid="emission">1 0 0 1</color>
+       </emission>
+       <ambient>
+         <color sid="ambient">1 0 0 1</color>
+       </ambient>
+     ```
 
 3. Initially, no objects are shown as bright, even when spanning cylinders.
    However, there is a human in the scene, although initially they are far away from the conveyor belt:
@@ -121,16 +134,17 @@ To run the thermal sensor in the simulation:
    Whenever a human is found close to the conveyor belt, the Gazebo world will be reset, moving the human far away again.
 
 ## Contact sensors
-The suction cups of the grabber use contact sensors to detech objects that need to be picked up.
+The suction cups of the grabber use contact sensors to detect objects that need to be picked up.
 
 ### Visualization
   To visualize the sensors in RViz, we have created the `techtrix_grabber_contact_plugin` which publishes markers.
-  The red sphere markers indicate the the specific sensor is currently making a contact.
+  The red sphere markers indicate the specific sensor is currently making a contact.
 
   ![no_contacts.png](readme_images%2Fno_contacts.png)
   ![contacts.png](readme_images%2Fcontacts.png)
 ### Implementation
-  The sensors are implemented in `techtrix_grabber_world_plugin` - a plugin that manages the suction cups - allowing them to pick up and let go of objects that make contact with the suction cups/contact sensors automatically.
+  The sensors are implemented in `techtrix_grabber_world_plugin` - a plugin that manages the suction cups—allowing 
+  them to pick up and let go of objects that make contact with the suction cups/contact sensors automatically.
 
   The plugin allows the grabbing to be turned on:
   ```
@@ -141,17 +155,26 @@ The suction cups of the grabber use contact sensors to detech objects that need 
   rosservice call /grabber_world_plugin_node/grabber "is_on: false" 
   ```
 
-  The idea behind the plugin is that it reads the topics provided by the sensors and if there is a collision/contact (you should see the red markers in RViz) and the grabbing is on (based on the service it advertises), then it dynamically creates a link between the grabber and the object. See the demo.
+  The idea behind the plugin is that it reads the topics provided by the sensors and if there is a collision/contact 
+  (you should see the red markers in RViz) and the grabbing is on (based on the service it advertises), 
+  then it dynamically creates a link between the grabber and the object.
+  See the demo.
 
 ## Laser sensors
-The laser sensors function as safety mechanism prevent the grabber/lifting mechanism of hitting the cylinders while going down.
+The laser sensors function as a safety mechanism to prevent the grabber/lifting mechanism from hitting the cylinders while going down.
 ### Visualization
-  For visualization in RViz we are using an already existing plugin, that creates red dots where the laser meets an object.
+  For visualization in RViz,
+  we are using an already existing plugin that creates red dots where the laser meets an object.
 
   ![lasers1.png](readme_images%2Flasers1.png)
   ![lasers2.png](readme_images%2Flasers2.png)
 ### Implementation
-  The sensors are implemented in `techtrix_grabber_model_plugin` (loaded on the TechTrix robot URDF model) - a plugin that issues stop commands to the lifting joint controller when neccassery. The plugin subscribes to the laser sensors and the state of the lifting joint controller. If there is an object that is sufficiantly close to the grabber and the lifting joint controller is set to lower the grabber even more, then a stop command is issued.
+  The sensors are implemented in `techtrix_grabber_model_plugin` (loaded on the TechTrix robot URDF model) -
+  a plugin that issues stop commands to the lifting joint controller when necessary.
+  The plugin subscribes to the laser sensors and the state of the lifting joint controller.
+  If there is an object that is sufficiently close to the grabber
+  and the lifting joint controller is set to lower the grabber even more,
+  then a stop command is issued.
 
   Without the plugin and the sensors, the grabber collides with the cylinders:
 
